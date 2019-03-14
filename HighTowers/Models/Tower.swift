@@ -32,6 +32,7 @@ struct Tower {
         let towerLocation = CLLocation(latitude: towerLat, longitude: towerLon)
         return towerLocation
     }
+
     
 //    mutating func receiveTowerImageMeasurement(totalHeightMeasure:Double, measureToObjectBase:Double, measureToObjectTop:Double) {
 //

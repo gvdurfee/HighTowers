@@ -12,18 +12,24 @@ import Foundation
 //This class will handle the formatting of any GPS data (e.g. Latitude, Longitude and Altude) for building survey PDF report.
 class GPSFormat {
     
-    //This method takes raw latitude coordinate and formats to D° MM.mm string
+    //This method takes raw latitude coordinate and formats to DD° MM.mm string
     func getDegreesLatitude(coordinate: Double) -> String {
         
+        var cardinal: String
         let latitude = coordinate
         let latDegrees = Int(latitude)
         let minutes = latitude.truncatingRemainder(dividingBy: 1) * 60
-        let formattedLat = String(format: "%d° %.2f' %@", abs(latDegrees), abs(minutes))
+        if latitude <= 0.0 {
+            cardinal = "S"
+        } else {
+            cardinal = "N"
+        }
+        let formattedLat = String(format: "%@ %d° %.2f'", cardinal, abs(latDegrees), abs(minutes))
         return formattedLat
         
     }
     
-    //This method takes raw longitude coordinate and formats to D° MM.mm string
+    //This method takes raw longitude coordinate and formats to DDD° MM.mm string
     func getDegreesLongitude(coordinate: Double) -> String {
         
         var cardinal: String
@@ -35,7 +41,7 @@ class GPSFormat {
         }else {
             cardinal = "E"
         }
-        let formattedLong = String(format: "%d° %.2f' %@", abs(longDegrees), abs(minutes), cardinal)
+        let formattedLong = String(format: "%@ %d° %.2f'", cardinal, abs(longDegrees), abs(minutes))
         return formattedLong
         
     }
@@ -55,4 +61,6 @@ class GPSFormat {
         let decimalLongitude = (latDegrees! + latMinutes! / 60) * -1
         return decimalLongitude
     }
+    
+    
 }

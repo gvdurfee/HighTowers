@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C703E518223AC7B800772253 /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703E516223AC7B800772253 /* Lines.swift */; };
+		C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703E517223AC7B800772253 /* SelectImageViewController.swift */; };
 		C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727F88521E00E7B0067AE72 /* FormatText.swift */; };
 		C73A74F32228852C000321BC /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73A74F22228852C000321BC /* GoogleMapViewController.swift */; };
 		C745D49521EE5C4800CF24BB /* HeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C745D49421EE5C4800CF24BB /* HeightCalculator.swift */; };
@@ -16,11 +18,11 @@
 		C7BAF02C21B826EC009E226E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02A21B826EC009E226E /* LaunchScreen.storyboard */; };
 		C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A52210A19700F9CABA /* Camera.swift */; };
 		C7C1E6A82210A1AC00F9CABA /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A72210A1AC00F9CABA /* Tower.swift */; };
-		C7C1E6CA2220B84D00F9CABA /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6C92220B84D00F9CABA /* Lines.swift */; };
-		C7F92C0021FA06B600DED0B7 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F92BFF21FA06B600DED0B7 /* SelectImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C703E516223AC7B800772253 /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lines.swift; sourceTree = "<group>"; };
+		C703E517223AC7B800772253 /* SelectImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C727F88521E00E7B0067AE72 /* FormatText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatText.swift; sourceTree = "<group>"; };
 		C73A74F22228852C000321BC /* GoogleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		C745D49421EE5C4800CF24BB /* HeightCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightCalculator.swift; sourceTree = "<group>"; };
@@ -32,8 +34,6 @@
 		C7BAF02D21B826EC009E226E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C1E6A52210A19700F9CABA /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		C7C1E6A72210A1AC00F9CABA /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
-		C7C1E6C92220B84D00F9CABA /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lines.swift; path = LinesSandbox/LinesSandbox/Lines.swift; sourceTree = SOURCE_ROOT; };
-		C7F92BFF21FA06B600DED0B7 /* SelectImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +98,9 @@
 		C7BAF03521B8315D009E226E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C703E516223AC7B800772253 /* Lines.swift */,
+				C703E517223AC7B800772253 /* SelectImageViewController.swift */,
 				C7BAF02121B826EB009E226E /* AppDelegate.swift */,
-				C7F92BFF21FA06B600DED0B7 /* SelectImageViewController.swift */,
-				C7C1E6C92220B84D00F9CABA /* Lines.swift */,
 				C73A74F22228852C000321BC /* GoogleMapViewController.swift */,
 			);
 			path = Controllers;
@@ -178,10 +178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */,
-				C7F92C0021FA06B600DED0B7 /* SelectImageViewController.swift in Sources */,
-				C7C1E6CA2220B84D00F9CABA /* Lines.swift in Sources */,
 				C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */,
+				C703E518223AC7B800772253 /* Lines.swift in Sources */,
 				C7C1E6A82210A1AC00F9CABA /* Tower.swift in Sources */,
+				C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */,
 				C73A74F32228852C000321BC /* GoogleMapViewController.swift in Sources */,
 				C745D49521EE5C4800CF24BB /* HeightCalculator.swift in Sources */,
 				C7BAF02221B826EB009E226E /* AppDelegate.swift in Sources */,
