@@ -78,7 +78,9 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         goToMap.isHidden = true
         submitForCalculation.isHidden = true
         
-        //Setup first set of directions
+        //Setup first set of directions and give the text view rounded corners
+        directionsText.layer.cornerRadius = 5
+        
         directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. Once you've picked that image, the application returns you to the next screen."
         
         //Set image with tap instruction for user and adjust it to scrollView size

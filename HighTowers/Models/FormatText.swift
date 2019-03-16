@@ -46,7 +46,7 @@ class GPSFormat {
         
     }
     
-    //This method takes DD° MM.mm latitude and formats to DD.ddd° string
+    //This method takes DD° MM.mm' latitude and formats to DD.ddd° string
     func getDecimalDegreesLatitude(degrees: String, minutes: String) -> Double {
         let latDegrees = Double(degrees)
         let latMinutes = Double(minutes)
@@ -54,7 +54,7 @@ class GPSFormat {
         return decimalLatitude
     }
     
-    //This method takes DDD° MM.mm latitude and formats to DDD.ddd° string
+    //This method takes DDD° MM.mm' latitude and formats to DDD.ddd° string
     func getDecimalDegreesLongitude(degrees: String, minutes: String) -> Double {
         let latDegrees = Double(degrees)
         let latMinutes = Double(minutes)

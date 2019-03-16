@@ -26,6 +26,15 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var longitudeMinutes: UITextField!
     
     @IBOutlet var mapDirectionsText: UITextView!
+   
+    //Prepaer Buttons for round corners and borders
+  
+    @IBOutlet var recordMapData: UIButton!
+    
+    @IBOutlet var sendCoordinatesManually: UIButton!
+    
+    @IBOutlet var sendCoordinatesFromMap: UIButton!
+    
     
     //These two variables will hold the camera coordinates for the Google Map
     var passedLatitude: Double?
@@ -46,6 +55,24 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        //Adjust buttons for rounded corners and borders
+        recordMapData.layer.cornerRadius = 10
+        recordMapData.clipsToBounds = true
+        recordMapData.layer.borderWidth = 2
+        recordMapData.layer.borderColor = UIColor.black.cgColor
+        
+        sendCoordinatesManually.layer.cornerRadius = 10
+        sendCoordinatesManually.clipsToBounds = true
+        sendCoordinatesManually.layer.borderWidth = 2
+        sendCoordinatesManually.layer.borderColor = UIColor.black.cgColor
+        
+        sendCoordinatesFromMap.layer.cornerRadius = 10
+        sendCoordinatesFromMap.clipsToBounds = true
+        sendCoordinatesFromMap.layer.borderWidth = 2
+        sendCoordinatesFromMap.layer.borderColor = UIColor.black.cgColor
+        
+        mapDirectionsText.layer.cornerRadius = 5
         
     }
     //MARK: - Keyboard management functions
