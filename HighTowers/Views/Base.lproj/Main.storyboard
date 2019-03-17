@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="The user directions go here...." translatesAutoresizingMaskIntoConstraints="NO" id="sbM-dZ-Saw" userLabel="Directions Text View">
-                                <rect key="frame" x="20" y="20" width="984" height="100"/>
+                                <rect key="frame" x="20" y="20" width="984" height="120"/>
                                 <color key="backgroundColor" red="0.98878632484094675" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Nte-RZ-iZz"/>
+                                    <constraint firstAttribute="height" constant="120" id="Nte-RZ-iZz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ti8-Oe-aP6" userLabel="containerView">
@@ -72,10 +72,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-kq-FfQ">
-                                <rect key="frame" x="20" y="688" width="159" height="60"/>
+                                <rect key="frame" x="20" y="688" width="81" height="60"/>
                                 <color key="backgroundColor" red="0.32112640529999997" green="0.94004862759999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Submit for Calculation">
+                                <state key="normal">
+                                    <string key="title">Submit for 
+Calculation</string>
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -91,29 +93,33 @@
                                     <action selector="baseAdjust:" destination="BYZ-38-t0r" eventType="valueChanged" id="9mn-cA-Sob"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vu6-Be-sGa">
-                                <rect key="frame" x="878" y="688" width="126" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vu6-Be-sGa">
+                                <rect key="frame" x="923" y="688" width="81" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xZw-RN-KIe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Reset Application">
+                                <state key="normal">
+                                    <string key="title">     Reset 
+Application</string>
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="resetApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fur-5L-W25"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qd0-lX-HTW">
-                                <rect key="frame" x="705" y="688" width="113" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qd0-lX-HTW">
+                                <rect key="frame" x="794" y="688" width="69" height="60"/>
                                 <color key="backgroundColor" red="0.60920739170000004" green="0.80923175810000003" blue="0.94904345270000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="kUR-5c-moJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="1D5-8i-8mC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <state key="normal" title="Go To Map">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <string key="title">Go To 
+ Map</string>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="goToMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X8f-T2-NYG"/>
@@ -125,7 +131,7 @@
                             <constraint firstItem="Ti8-Oe-aP6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2UX-5C-Wc9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bh4-iG-cHA" secondAttribute="trailing" constant="-85" id="6d7-m2-9VP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vu6-Be-sGa" secondAttribute="bottom" constant="20" id="7oW-Dd-XRx"/>
-                            <constraint firstItem="Y8O-kq-FfQ" firstAttribute="top" secondItem="qd0-lX-HTW" secondAttribute="top" id="B0p-Dr-jWP"/>
+                            <constraint firstItem="qd0-lX-HTW" firstAttribute="leading" secondItem="P5H-AM-4tN" secondAttribute="trailing" constant="232" id="8F9-8H-UOD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vu6-Be-sGa" secondAttribute="trailing" constant="20" id="Be2-8G-qOf"/>
                             <constraint firstItem="Y8O-kq-FfQ" firstAttribute="bottom" secondItem="P5H-AM-4tN" secondAttribute="bottom" id="EkL-yQ-pRV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sbM-dZ-Saw" secondAttribute="trailing" constant="20" id="IST-wb-Om8"/>
@@ -133,15 +139,17 @@
                             <constraint firstItem="P5H-AM-4tN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NX7-zO-gas"/>
                             <constraint firstItem="bh4-iG-cHA" firstAttribute="top" secondItem="Wg2-pG-Jet" secondAttribute="top" id="NcZ-ch-XBv"/>
                             <constraint firstItem="sbM-dZ-Saw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OwY-bS-SW6"/>
-                            <constraint firstItem="qd0-lX-HTW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="P5H-AM-4tN" secondAttribute="trailing" constant="8" symbolic="YES" id="YLF-0f-WIk"/>
-                            <constraint firstItem="Ti8-Oe-aP6" firstAttribute="top" secondItem="sbM-dZ-Saw" secondAttribute="bottom" constant="47" id="YuM-qd-RoW"/>
+                            <constraint firstItem="qd0-lX-HTW" firstAttribute="top" secondItem="vu6-Be-sGa" secondAttribute="top" id="QOu-QY-eXO"/>
+                            <constraint firstItem="vu6-Be-sGa" firstAttribute="leading" secondItem="qd0-lX-HTW" secondAttribute="trailing" constant="60" id="VpF-sx-dhV"/>
+                            <constraint firstItem="qd0-lX-HTW" firstAttribute="baseline" secondItem="vu6-Be-sGa" secondAttribute="baseline" id="Wvw-Oo-ZDd"/>
+                            <constraint firstItem="qd0-lX-HTW" firstAttribute="baseline" secondItem="Y8O-kq-FfQ" secondAttribute="baseline" id="X8I-Vz-zgw"/>
+                            <constraint firstItem="Ti8-Oe-aP6" firstAttribute="top" secondItem="sbM-dZ-Saw" secondAttribute="bottom" constant="27" id="YuM-qd-RoW"/>
+                            <constraint firstItem="qd0-lX-HTW" firstAttribute="firstBaseline" secondItem="vu6-Be-sGa" secondAttribute="firstBaseline" id="ZRT-GT-xNN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P5H-AM-4tN" secondAttribute="bottom" constant="20" id="Zxw-t1-xAs"/>
                             <constraint firstItem="WA3-2b-cVM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="awq-gl-139"/>
                             <constraint firstItem="Wg2-pG-Jet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-86" id="b7A-AV-sXK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qd0-lX-HTW" secondAttribute="bottom" constant="20" id="bcO-xT-lHM"/>
                             <constraint firstItem="P5H-AM-4tN" firstAttribute="top" secondItem="WA3-2b-cVM" secondAttribute="bottom" constant="20" id="cs9-IO-dXe"/>
                             <constraint firstItem="sbM-dZ-Saw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ePw-OP-Mss"/>
-                            <constraint firstItem="vu6-Be-sGa" firstAttribute="leading" secondItem="qd0-lX-HTW" secondAttribute="trailing" constant="60" id="fA4-v4-cCg"/>
                             <constraint firstItem="bh4-iG-cHA" firstAttribute="centerY" secondItem="Ti8-Oe-aP6" secondAttribute="centerY" id="jMW-H8-N2m"/>
                             <constraint firstItem="P5H-AM-4tN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y8O-kq-FfQ" secondAttribute="trailing" constant="8" symbolic="YES" id="kOs-33-I3o"/>
                             <constraint firstItem="Y8O-kq-FfQ" firstAttribute="leading" secondItem="sbM-dZ-Saw" secondAttribute="leading" id="oXI-ig-bni"/>
@@ -178,13 +186,13 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pO1-XO-c1m">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="754"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="The user directions go here...." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="58Y-hW-Vm8" userLabel="Directions Text View">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="The user directions go here...." translatesAutoresizingMaskIntoConstraints="NO" id="58Y-hW-Vm8" userLabel="Directions Text View">
                                         <rect key="frame" x="20" y="20" width="984" height="120"/>
                                         <color key="backgroundColor" red="0.98878632479999995" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="ovd-ka-e9m"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGS-6Y-ZRF">

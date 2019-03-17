@@ -51,35 +51,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Round the corners on the buttons
-        submitForCalculation.layer.cornerRadius = 10
-        submitForCalculation.clipsToBounds = true
-        submitForCalculation.layer.borderWidth = 2
-        submitForCalculation.layer.borderColor = UIColor.black.cgColor
-        
-        resetApp.layer.cornerRadius = 10
-        resetApp.clipsToBounds = true
-        resetApp.layer.borderWidth = 2
-        resetApp.layer.borderColor = UIColor.black.cgColor
-        
-        goToMap.layer.cornerRadius = 10
-        goToMap.clipsToBounds = true
-        goToMap.layer.borderWidth = 2
-        goToMap.layer.borderColor = UIColor.red.cgColor
-        
-        //Hide the sliders until the image is picked.
-        topSlider.isHidden = true
-        baseSlider.isHidden = true
-        
-        //Hide the other controls and fields until the image is picked.
-        towerHeight.isHidden = true
-        towerHeightLabel.isHidden = true
-        resetApp.isHidden = true
-        goToMap.isHidden = true
-        submitForCalculation.isHidden = true
-        
-        //Setup first set of directions and give the text view rounded corners
-        directionsText.layer.cornerRadius = 5
+        formatControlsAndViews()
         
         directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. Once you've picked that image, the application returns you to the next screen."
         
@@ -96,7 +68,40 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         imageView.addGestureRecognizer(tapGesture)
         
         
+    }
+    
+    //MARK: - Take care of object formatting.
+    /***************************************************************/
+    fileprivate func formatControlsAndViews() {
+        //Round the corners on the buttons
+        submitForCalculation.layer.cornerRadius = 10
+        submitForCalculation.clipsToBounds = true
+        submitForCalculation.layer.borderWidth = 1
+        submitForCalculation.layer.borderColor = UIColor.black.cgColor
         
+        resetApp.layer.cornerRadius = 10
+        resetApp.clipsToBounds = true
+        resetApp.layer.borderWidth = 1
+        resetApp.layer.borderColor = UIColor.black.cgColor
+        
+        goToMap.layer.cornerRadius = 10
+        goToMap.clipsToBounds = true
+        goToMap.layer.borderWidth = 1
+        goToMap.layer.borderColor = UIColor.red.cgColor
+        
+        //Hide the sliders until the image is picked.
+        topSlider.isHidden = true
+        baseSlider.isHidden = true
+        
+        //Hide the other controls and fields until the image is picked.
+        towerHeight.isHidden = true
+        towerHeightLabel.isHidden = true
+        resetApp.isHidden = true
+        goToMap.isHidden = true
+        submitForCalculation.isHidden = true
+        
+        //Setup first set of directions and give the text view rounded corners
+        directionsText.layer.cornerRadius = 5
     }
     
     
