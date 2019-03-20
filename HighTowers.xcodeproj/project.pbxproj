@@ -18,9 +18,12 @@
 		C7BAF02C21B826EC009E226E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02A21B826EC009E226E /* LaunchScreen.storyboard */; };
 		C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A52210A19700F9CABA /* Camera.swift */; };
 		C7C1E6A82210A1AC00F9CABA /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A72210A1AC00F9CABA /* Tower.swift */; };
+		EA71296D04B30261C6DB0877 /* Pods_HighTowers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		590FA1D76A82B2CCE08F636B /* Pods-HighTowers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighTowers.release.xcconfig"; path = "Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers.release.xcconfig"; sourceTree = "<group>"; };
+		820FF6BC8250C38ED98DE64A /* Pods-HighTowers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighTowers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers.debug.xcconfig"; sourceTree = "<group>"; };
 		C703E516223AC7B800772253 /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lines.swift; sourceTree = "<group>"; };
 		C703E517223AC7B800772253 /* SelectImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C727F88521E00E7B0067AE72 /* FormatText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatText.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		C7BAF02D21B826EC009E226E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C1E6A52210A19700F9CABA /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		C7C1E6A72210A1AC00F9CABA /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
+		EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighTowers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA71296D04B30261C6DB0877 /* Pods_HighTowers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1503E935BE4A4803539324FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				820FF6BC8250C38ED98DE64A /* Pods-HighTowers.debug.xcconfig */,
+				590FA1D76A82B2CCE08F636B /* Pods-HighTowers.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C7BAF01521B826EB009E226E = {
 			isa = PBXGroup;
 			children = (
 				C7BAF02021B826EB009E226E /* HighTowers */,
 				C7BAF01F21B826EB009E226E /* Products */,
+				1503E935BE4A4803539324FB /* Pods */,
+				E21166F942AC9334B43A25F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +122,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E21166F942AC9334B43A25F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7BAF03021B826EC009E226E /* Build configuration list for PBXNativeTarget "HighTowers" */;
 			buildPhases = (
+				0DD2B7E2FACFDDC47B7ED224 /* [CP] Check Pods Manifest.lock */,
 				C7BAF01A21B826EB009E226E /* Sources */,
 				C7BAF01B21B826EB009E226E /* Frameworks */,
 				C7BAF01C21B826EB009E226E /* Resources */,
+				3D82998C28359DB8F10966FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +197,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DD2B7E2FACFDDC47B7ED224 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HighTowers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D82998C28359DB8F10966FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C7BAF01A21B826EB009E226E /* Sources */ = {
@@ -328,6 +403,7 @@
 		};
 		C7BAF03121B826EC009E226E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 820FF6BC8250C38ED98DE64A /* Pods-HighTowers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -346,6 +422,7 @@
 		};
 		C7BAF03221B826EC009E226E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 590FA1D76A82B2CCE08F636B /* Pods-HighTowers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

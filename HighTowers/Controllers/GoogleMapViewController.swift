@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 
 class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     //Create outlets for scroll view and text fields.
+    
+    @IBOutlet var google_Map: GMSMapView!
     
     @IBOutlet var scrollView: UIScrollView!
     
@@ -37,8 +41,8 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     
     //These two variables will hold the camera coordinates for the Google Map
-    var passedLatitude: Double?
-    var passedLongitude: Double?
+    var passedLatitude: Double = 0.0
+    var passedLongitude: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +61,20 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         formatControlsAndViews()
+        
+        let camera = GMSCameraPosition.camera(withLatitude: passedLatitude, longitude: passedLongitude, zoom: 12.0)
+        google_Map.camera = camera
+        google_Map.mapType = GMSMapViewType.hybrid
+        self.show_Marker(position: google_Map.camera.target)
+        self.google_Map.delegate = self
+    }
+    
+    func show_Marker(position: CLLocationCoordinate2D) {
+        let marker = GMSMarker()
+        marker.position = position
+        marker.title = "Tower"
+        marker.snippet = "What we're looking for"
+        marker.map = google_Map
         
     }
     
@@ -80,6 +98,11 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         sendCoordinatesFromMap.layer.borderColor = UIColor.black.cgColor
         
         mapDirectionsText.layer.cornerRadius = 5
+    }
+    
+    //Change to white text due to dark background.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     //MARK: - Keyboard management functions
@@ -143,4 +166,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     @IBAction func sendCoordinatesFromMap(_ sender: UIButton) {
     }
     
+}
+extension GoogleMapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("Clicked on Marker")
+    }
 }

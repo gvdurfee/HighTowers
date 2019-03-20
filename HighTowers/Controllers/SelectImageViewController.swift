@@ -104,6 +104,11 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         directionsText.layer.cornerRadius = 5
     }
     
+    //Change to white text due to dark background.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     
     //MARK: - Open the PhotoLibrary to select image
     /***************************************************************/
@@ -232,8 +237,8 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMap" {
             let destinationVC = segue.destination as! GoogleMapViewController
-            destinationVC.passedLatitude = camera.cameraLatitude
-            destinationVC.passedLongitude = camera.cameraLongitude
+            destinationVC.passedLatitude = camera.cameraLatitude!
+            destinationVC.passedLongitude = camera.cameraLongitude!
         } 
     }
     
