@@ -87,7 +87,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         goToMap.layer.cornerRadius = 10
         goToMap.clipsToBounds = true
         goToMap.layer.borderWidth = 1
-        goToMap.layer.borderColor = UIColor.red.cgColor
+        goToMap.layer.borderColor = UIColor.black.cgColor
         
         //Hide the sliders until the image is picked.
         topSlider.isHidden = true
@@ -239,6 +239,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
             let destinationVC = segue.destination as! GoogleMapViewController
             destinationVC.passedLatitude = camera.cameraLatitude!
             destinationVC.passedLongitude = camera.cameraLongitude!
+            destinationVC.passedBearing = camera.bearingToTower()
         } 
     }
     
