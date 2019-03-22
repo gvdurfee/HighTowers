@@ -64,12 +64,16 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         formatControlsAndViews()
+        
+        
         //Set up camera position with coordinates of interest
         let camera = GMSCameraPosition.camera(withLatitude: passedLatitude, longitude: passedLongitude, zoom: 13)
         google_Map.camera = camera
         google_Map.mapType = .hybrid
+        google_Map.delegate = self
 
     }
+    
     
     //MARK: - Centered Google Map and Marker.
     /***************************************************************/
@@ -80,7 +84,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
         // Add Marker
         marker.isDraggable = true
-        marker.title = "Airborne Camera Location"
+        marker.title = "Aircraft Camera Location"
         marker.position = CLLocationCoordinate2DMake(passedLatitude, passedLongitude)
         marker.map = google_Map
         
@@ -89,12 +93,12 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     //Move the marker from the aircraft camera location to the estimated tower location.
-    @objc func moveMarker(){
+    @objc func moveMarker() {
+
         let gpsFormat = GPSFormat()
         let lat = gpsFormat.getDecimalDegreesLatitude(degrees: latitudeDegrees.text!, minutes: latitudeMinutes.text!)
         let lon = gpsFormat.getDecimalDegreesLongitude(degrees: longitudeDegrees.text!, minutes: longitudeMinutes.text!)
-        
-        
+
         CATransaction.begin()
         CATransaction.setValue(0.5, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock {
@@ -106,13 +110,11 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
 
         marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.isDraggable = true
-        marker.title = "Tower Location"
+        marker.title = "Estimated Tower Location"
     }
     
     
-
-    
-    //MARK: - Take care of object formatting.
+    //MARK: - Take care of storyboard object formatting.
     /***************************************************************/
     fileprivate func formatControlsAndViews() {
         //Adjust buttons for rounded corners and borders
@@ -177,8 +179,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         default:
             longitudeMinutes.resignFirstResponder()
         }
+        //Call moveMarker() in order to go to the approximate position of the tower
+        moveMarker()
         
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(moveMarker), userInfo: nil, repeats: true)
         return true
         
     }
@@ -211,6 +214,9 @@ extension GoogleMapViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
+        google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
         marker.position = coordinate
+        marker.title = "Actual Tower Location"
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
 }
