@@ -62,5 +62,12 @@ class GPSFormat {
         return decimalLongitude
     }
     
+    //This method takes tower base latitude and longitude and properly formats the URL to the Elevation API
+    func formatURLString(latitude: Double, longitude: Double) -> String {
+        
+        let urlString = "https://maps.googleapis.com/maps/api/elevation/json?locations=\(latitude),\(longitude)&key=AIzaSyAcNo2h8Yaq138ZEH4S2Nx_yGDnSTyj0bM"
+        
+        return urlString
+    }
     
 }

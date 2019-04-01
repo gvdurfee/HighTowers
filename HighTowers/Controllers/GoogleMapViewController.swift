@@ -6,12 +6,24 @@
 //  Copyright © 2019 Durfee's Sandbox. All rights reserved.
 //
 
+//1. The protocol declaration
+protocol GoogleMVCDelegate {
+    func transferTowerData(_ latitude: Double, _ longitude: Double, _ elevation: Double)
+}
+
+
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SwiftyJSON
+import Alamofire
+
 
 
 class GoogleMapViewController: UIViewController, UITextFieldDelegate {
+    
+    //2. Declare the delegate variable
+    var delegate: GoogleMVCDelegate?
     
     //Create outlets for scroll view and text fields.
     
@@ -44,9 +56,38 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     var passedLatitude: Double = 0.0
     var passedLongitude: Double = 0.0
     var passedBearing: Double = 0.0
-    var tower = Tower()
     var marker = GMSMarker()
+    var tower = Tower()
     var timer = Timer()
+    var gpsFormat = GPSFormat()
+    
+    
+    //Change to Status Bar to white text due to dark background.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    //MARK: - Take care of storyboard object formatting.
+    /***************************************************************/
+    fileprivate func formatControlsAndViews() {
+        //Adjust buttons for rounded corners and borders
+        recordMapData.layer.cornerRadius = 10
+        recordMapData.clipsToBounds = true
+        recordMapData.layer.borderWidth = 1
+        recordMapData.layer.borderColor = UIColor.black.cgColor
+        
+        sendCoordinatesManually.layer.cornerRadius = 10
+        sendCoordinatesManually.clipsToBounds = true
+        sendCoordinatesManually.layer.borderWidth = 1
+        sendCoordinatesManually.layer.borderColor = UIColor.black.cgColor
+        
+        sendCoordinatesFromMap.layer.cornerRadius = 10
+        sendCoordinatesFromMap.clipsToBounds = true
+        sendCoordinatesFromMap.layer.borderWidth = 1
+        sendCoordinatesFromMap.layer.borderColor = UIColor.black.cgColor
+        
+        mapDirectionsText.layer.cornerRadius = 5
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +95,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
         latitudeMinutes.delegate = self
-        towerBaseElevation.delegate = self
         longitudeDegrees.delegate = self
         longitudeMinutes.delegate = self
         
@@ -111,37 +151,14 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.isDraggable = true
         marker.title = "Estimated Tower Location"
+        
+        //Pass the tower location information when the view is dismissed.
+        
+        //tower.receiveTowerPosition(marker.position)
+        
     }
     
-    
-    //MARK: - Take care of storyboard object formatting.
-    /***************************************************************/
-    fileprivate func formatControlsAndViews() {
-        //Adjust buttons for rounded corners and borders
-        recordMapData.layer.cornerRadius = 10
-        recordMapData.clipsToBounds = true
-        recordMapData.layer.borderWidth = 1
-        recordMapData.layer.borderColor = UIColor.black.cgColor
-        
-        sendCoordinatesManually.layer.cornerRadius = 10
-        sendCoordinatesManually.clipsToBounds = true
-        sendCoordinatesManually.layer.borderWidth = 1
-        sendCoordinatesManually.layer.borderColor = UIColor.black.cgColor
-        
-        sendCoordinatesFromMap.layer.cornerRadius = 10
-        sendCoordinatesFromMap.clipsToBounds = true
-        sendCoordinatesFromMap.layer.borderWidth = 1
-        sendCoordinatesFromMap.layer.borderColor = UIColor.black.cgColor
-        
-        mapDirectionsText.layer.cornerRadius = 5
-    }
-    
-    //Change to white text due to dark background.
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    //MARK: - Keyboard management functions
+    //MARK: - Keyboard management functions and left to right order of manual filling of text fields.
     /***************************************************************/
     @objc func adjustForKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
@@ -159,8 +176,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    //MARK: - Left to right order of manual filling of text fields.
-    /***************************************************************/
     
     //Establish the order of filling text fields when only manually entered information is avaliable. User's information is loaded left to right and the keyboard is dismissed after longitudeMinutes is loaded.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -169,19 +184,15 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         case latitudeDegrees:
             latitudeMinutes.becomeFirstResponder()
         case latitudeMinutes:
-            towerBaseElevation.becomeFirstResponder()
-        case towerBaseElevation:
             longitudeDegrees.becomeFirstResponder()
-        case longitudeDegrees:
-            longitudeMinutes.becomeFirstResponder()
         case longitudeDegrees:
             longitudeMinutes.becomeFirstResponder()
         default:
             longitudeMinutes.resignFirstResponder()
         }
+        
         //Call moveMarker() in order to go to the approximate position of the tower
         moveMarker()
-        
         return true
         
     }
@@ -194,9 +205,45 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     
+    func getTowerLocationData(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
+        
+        //Properly format the URL to be used for the Alamofire request.
+        let googleURL = gpsFormat.formatURLString(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        
+        //The Alamofire request will return the the JSON response including the elevation data for the tower base elevation.
+        Alamofire.request(googleURL, method: .get).responseJSON {
+            response in
+            if response.result.isSuccess {
+                print("Success! Got the Elevation data.")
+                
+                let elevationJSON: JSON = JSON(response.result.value!)
+                print(elevationJSON)
+                
+                //Pass the tower data to the Tower Model
+                let tLat = elevationJSON["results"][0]["location"]["lat"].doubleValue
+                let tLon = elevationJSON["results"][0]["location"]["lng"].doubleValue
+                let tElev = elevationJSON["results"][0]["elevation"].doubleValue * 3.28084
+                
+                //5. self.tower.getTowerProperties(tLat, tLon, tElev)
+                //print(self.tower.getTowerProperties(tLat, tLon, tElev))
+                self.delegate?.transferTowerData(tLat, tLon, tElev)
+                
+            } else {
+                print("Error \(String(describing: response.result.error))")
+                self.mapDirectionsText.text = "Internet Connection Issues"
+            }
+        }
+    }
+    
+    
+    
     //If Google Map data is used, the marker position will be used to populate the text fields with corridinates and tower elevation.
     @IBAction func recordMapData(_ sender: UIButton) {
         
+        self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
+        
+        
+        dismiss(animated: true, completion: nil)
     }
     //If Google Map data can't be used, then the coordinates and elevation will be passed with this control.
     @IBAction func sendCoordinatesManually(_ sender: UIButton) {
@@ -217,6 +264,11 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
         marker.position = coordinate
         marker.title = "Actual Tower Location"
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        
+        self.getTowerLocationData(coordinate.latitude, coordinate.longitude)
+        
+        //Call the getTowerLocationData function to gather tower position data
+        self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
     }
 }
+

@@ -15,31 +15,57 @@ struct Tower {
     
     //Map properties
     //As a placeholder for now, provide target location data to the TargetLocation object to test the calculations
-    var towerBaseAltitudeMSL = 6227.0
-    var towerLat = 36.264
-    var towerLon = -104.0348
-    //var towerCoordinates = CLLocation?.self
-
-
-    //Image measurement properties
-    var verticalDistance = 0.0
-    var distanceToBase = 0.0
-    var distanceToTop = 0.0
     
-    
-    //Placeholders for tower location
-    mutating func towerLocationData() -> CLLocation {
-        let towerLocation = CLLocation(latitude: towerLat, longitude: towerLon)
-        return towerLocation
+    init() {
+        targetLatitude = 0.0
+        targetLongitude = 0.0
+        targetElevation = 0.0
     }
-
     
-//    mutating func receiveTowerImageMeasurement(totalHeightMeasure:Double, measureToObjectBase:Double, measureToObjectTop:Double) {
-//
-//        verticalDistance = totalHeightMeasure
-//        distanceToBase = measureToObjectBase
-//        distanceToTop = measureToObjectTop
-//        print(verticalDistance, distanceToBase, distanceToTop)
-//
-//    }
+    // These computed properties will receive the tower data from getTowerProperties
+    var targetLatitude: Double {
+        didSet {
+            print("This property is now \(targetLatitude)")
+        }
+    }
+    var targetLongitude: Double {
+        didSet {
+            print("This property is now \(targetLongitude)")
+        }
+    }
+    var targetElevation: Double {
+        didSet{
+            print("This property is now \(targetElevation)")
+        }
+    }
+    
+    //These properties will transfer tower data to the Camera Model
+    var towerLatitude: Double {
+        get {
+            return targetLatitude
+        }
+    }
+    
+    var towerLongitude: Double {
+        get {
+            return targetLongitude
+        }
+    }
+    
+    var towerElevation: Double {
+        get {
+            return targetElevation
+        }
+    }
+    
+    //This function will pick up the tower data from JSON in the Alamofire function
+    mutating func getTowerProperties(_ latitude: Double, _ longitude: Double, _ elevation: Double) {
+        
+        targetLatitude = latitude
+        targetLongitude = longitude
+        targetElevation = elevation
+        print(targetLatitude as Any, targetLongitude as Any, targetElevation as Any)
+        
+    }
+    
 }

@@ -26,10 +26,15 @@ struct Camera {
     var cameraModel: String?
     var cameraSensorHeight: Double = 0.0
     
-    var tower = Tower()
+    //The tower values will be passed from the SelectedImageViewController via the delegate function
+    var towerLatitude: Double?
+    var towerLongitude: Double?
+    var towerElevation: Double?
+    
     
     var distanceToTowerBase: Double?
     var cameraAltAboveTargetBase: Double?
+    
     
     var totalVerticalMeasure: Float?
     var measureToObjectBase: Float?
@@ -70,9 +75,8 @@ struct Camera {
         cameraSensorHeight = sensorHeightAdjust(cameraName: cameraModel!)
         print(cameraModel as Any, cameraSensorHeight)
         
-        //print(tiffMetaData as Any, exifMetaData as Any, gpsMetaData as Any, cameraAltitude as Any, cameraLongitudeREF as Any, cameraLatitudeREF as Any, cameraLatitude as Any, cameraLongitude as Any, aircraftCoordinates as Any, cameraFocalLength as Any, cameraModel as Any )
-        
     }
+    
     //MARK: - Set proper signs for the camera's Latitude and Longitude based on hemispheres
     /***************************************************************/
     mutating func resolveLatLongreferences(coordinate: String ) -> Double {
@@ -101,10 +105,12 @@ struct Camera {
     
     mutating func bearingToTower() -> Double {
         
+        let targetLatitude = towerLatitude
+        let targetLongitude = towerLongitude
         let fromLat = degreesToRadians(coordinate: aircraftCoordinates!.coordinate.latitude)
         let fromLon = degreesToRadians(coordinate: aircraftCoordinates!.coordinate.longitude)
-        let toLat = degreesToRadians(coordinate: tower.towerLat)
-        let toLon = degreesToRadians(coordinate: tower.towerLon)
+        let toLat = degreesToRadians(coordinate: (targetLatitude!))
+        let toLon = degreesToRadians(coordinate: (targetLongitude!))
         
         let y = sin(toLon - fromLon) * cos(toLat)
         let x = cos(fromLat) * sin(toLat) - sin(fromLat) * cos(toLat) * cos(toLon - fromLon)
@@ -129,16 +135,20 @@ struct Camera {
         let coordinateDegrees = coordinate * 180 / Double.pi
         return coordinateDegrees
     }
-    
+
     //MARK: - Opposite Angle Calculation from Camera Altitude and Tower Elevaton distances
     /***************************************************************/
+    
     //The opposite angle is needed to calculate adjacent angle, which is needed to calculate tilt angle of the camera.
     mutating func oppositeAngle() -> Double {
+        let targetLatitude = towerLatitude
+        let targetLongitude = towerLongitude
         
-        let towerCoordinates = tower.towerLocationData()
-        distanceToTowerBase = Double((aircraftCoordinates?.distance(from: towerCoordinates))!) * 3.28084
-        let towerBaseAltitude = tower.towerBaseAltitudeMSL
-        cameraAltAboveTargetBase = cameraAltitude! - towerBaseAltitude
+        let targetCoordinates = CLLocation(latitude: targetLatitude!, longitude: targetLongitude!)
+        print(targetCoordinates)
+        distanceToTowerBase = ((aircraftCoordinates!.distance(from: targetCoordinates))) * 3.28084
+        let targetBaseAltitude = towerElevation
+        cameraAltAboveTargetBase = cameraAltitude! - targetBaseAltitude!
         let oppositeAngleRAD = atan(cameraAltAboveTargetBase! / distanceToTowerBase!)
         print(oppositeAngleRAD)
         return oppositeAngleRAD

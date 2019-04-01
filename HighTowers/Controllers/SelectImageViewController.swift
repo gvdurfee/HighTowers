@@ -17,7 +17,10 @@ extension UIImagePickerController {
     }
 }
 
-class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+//3. Add the GoogleMVCDelegate to the class. Note that the text color indicates a developer designed delegate instead of Swift source code.
+class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GoogleMVCDelegate {
+    
+    
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var directionsText: UITextView!
@@ -34,8 +37,8 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     
     //Instantiate a Camera and Tower objects to receive properties necessary to calculate the tower height
-    var camera = Camera.init()
-    var tower = Tower()
+    lazy var camera = Camera.init()
+    lazy var tower = Tower()
     
     //Lines is a Cocoa Touch file for configuring the measurement lines that allow the user to identify the top and base of the tower.
     var lines: Lines!
@@ -142,11 +145,11 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         viewWithSliders()
         
         //Present the other controls and fields
-        towerHeight.isHidden = false
-        towerHeightLabel.isHidden = false
+        //towerHeight.isHidden = false
+        //towerHeightLabel.isHidden = false
         resetApp.isHidden = false
         goToMap.isHidden = false
-        submitForCalculation.isHidden = false
+        //submitForCalculation.isHidden = false
         
         
         //Determine the URL for the image picked in order for the Camera Model to extract and use the relevant image metadata.
@@ -160,6 +163,14 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
     }
     
+    //4. Here's the delegate protocol function stub.
+    func transferTowerData(_ latitude: Double, _ longitude: Double, _ elevation: Double) {
+        camera.towerLatitude = latitude
+        camera.towerLongitude = longitude
+        camera.towerElevation = elevation
+        print("Here's the delegate protocol function.")
+    }
+    
     //MARK: - Set the UISliders and add the measure subView
     /***************************************************************/
     func viewWithSliders() {
@@ -168,8 +179,9 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         directionsText.text = "Now that you see the image you want to analyze, the slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower."
         
         //Show the sliders, adjust to vertical and set their colors
-        topSlider.isHidden = false
-        baseSlider.isHidden = false
+        //topSlider.isHidden = false
+        //baseSlider.isHidden = false
+        
         
         //Rotate both sliders to vertical
         topSlider.transform = CGAffineTransform(scaleX: 2, y: 2)
@@ -231,6 +243,13 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     @IBAction func goToMap(_ sender: UIButton) {
         
+        //Prepare to show controls and text once Google Map screen is dismissed.
+        topSlider.isHidden = false
+        baseSlider.isHidden = false
+        towerHeightLabel.isHidden = false
+        towerHeight.isHidden = false
+        submitForCalculation.isHidden = false
+        
         performSegue(withIdentifier: "goToMap", sender: self)
     }
     
@@ -239,7 +258,8 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
             let destinationVC = segue.destination as! GoogleMapViewController
             destinationVC.passedLatitude = camera.cameraLatitude!
             destinationVC.passedLongitude = camera.cameraLongitude!
-            destinationVC.passedBearing = camera.bearingToTower()
+            
+            destinationVC.delegate = self
         } 
     }
     
