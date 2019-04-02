@@ -73,7 +73,7 @@ struct Camera {
         cameraModel = (tiffMetaData![kCGImagePropertyTIFFModel] as? String)
         
         cameraSensorHeight = sensorHeightAdjust(cameraName: cameraModel!)
-        print(cameraModel as Any, cameraSensorHeight)
+        //print(cameraModel as Any, cameraSensorHeight)
         
     }
     
@@ -145,12 +145,13 @@ struct Camera {
         let targetLongitude = towerLongitude
         
         let targetCoordinates = CLLocation(latitude: targetLatitude!, longitude: targetLongitude!)
-        print(targetCoordinates)
+        //print(targetCoordinates)
         distanceToTowerBase = ((aircraftCoordinates!.distance(from: targetCoordinates))) * 3.28084
         let targetBaseAltitude = towerElevation
+        //print(targetBaseAltitude as Any)
         cameraAltAboveTargetBase = cameraAltitude! - targetBaseAltitude!
-        let oppositeAngleRAD = atan(cameraAltAboveTargetBase! / distanceToTowerBase!)
-        print(oppositeAngleRAD)
+        let oppositeAngleRAD = atan(distanceToTowerBase! / cameraAltAboveTargetBase!)
+        print(cameraAltAboveTargetBase, distanceToTowerBase, oppositeAngleRAD)
         return oppositeAngleRAD
     }
     
@@ -188,7 +189,7 @@ struct Camera {
         let focalLengthRAD = cameraFocalLength! * Double.pi / 180
         
         let aov = 2 * atan(verticalLength / (2 * focalLengthRAD))
-        print(aov)
+        print(verticalLength, focalLengthRAD, aov)
         return aov
         
     }
@@ -203,17 +204,21 @@ struct Camera {
     /***************************************************************/
     mutating func towerAGL() -> String {
         
-        let ninetyRAD = 90.0 * Double.pi/180
+        //let ninetyRAD = 90.0 * Double.pi/180
         let opposite: Double = oppositeAngle()
-        let beta1Ratio = Double(measureToObjectBase! / totalVerticalMeasure!)
-        let beta2Ratio = Double(measureToObjectTop! / totalVerticalMeasure!)
+        
+        //Since the height (in points) of a View is measured bottom to top, the ratios must conform allow a top to bottom measure of the image.
+        let beta1Ratio = Double((totalVerticalMeasure! - measureToObjectBase!) / totalVerticalMeasure!)
+        let beta2Ratio = Double((totalVerticalMeasure! - measureToObjectTop!) / totalVerticalMeasure!)
+        
         let beta1 = angleOfView(focalLength: cameraFocalLength!) * beta1Ratio
         let beta2 = angleOfView(focalLength: cameraFocalLength!) * beta2Ratio
+        print(beta1, beta2, beta1Ratio, beta2Ratio)
         
-        let tiltAngle = ninetyRAD - opposite - beta1 - beta2
+        let tiltAngle = opposite - beta1
         
         let towerHeight =  Int(cameraAltAboveTargetBase! * abs((1 - ((tan(tiltAngle + beta1))/(tan(tiltAngle + beta2))))))
-        print(towerHeight)
+        print(cameraAltAboveTargetBase!, tiltAngle, beta1, beta2, towerHeight)
         return String(towerHeight)
         
     }
