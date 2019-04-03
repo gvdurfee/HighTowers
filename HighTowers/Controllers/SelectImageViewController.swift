@@ -57,7 +57,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         formatControlsAndViews()
         
-        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. Once you've picked that image, the application takes you to the next screen."
+        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. Otherwise, the application will not work. Once you've picked that image, the application takes you to the next screen."
         
         //Set image with tap instruction for user and adjust it to scrollView size
         imageView.image = UIImage(named: "TapTower2")
@@ -251,10 +251,11 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let towerLatitude = gpsFormat.getDegreesLatitude(coordinate: towerLatitudeDecimal!)
         let towerLongitudeDecimal = camera.towerLongitude
         let towerLongitude = gpsFormat.getDegreesLongitude(coordinate: towerLongitudeDecimal!)
+        let bearingTrue = Int(camera.bearingToTower())
         
         //Change the final directions text to red and use the text field to display the results needed for the survey log.
         directionsText.textColor = UIColor.red
-        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at \(towerBaseMSL)' MSL, Latitude: \(towerLatitude), Longitude: \(towerLongitude); you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
+        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at \(towerBaseMSL)' MSL, Latitude: \(towerLatitude), Longitude: \(towerLongitude) and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
     }
     
     

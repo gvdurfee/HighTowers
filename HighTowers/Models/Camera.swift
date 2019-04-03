@@ -40,8 +40,6 @@ struct Camera {
     var measureToObjectBase: Float?
     var measureToObjectTop: Float?
     
-    var sivc = SelectImageViewController()
-    
     //MARK: - Extract necessary camera metadata
     /***************************************************************/
     
