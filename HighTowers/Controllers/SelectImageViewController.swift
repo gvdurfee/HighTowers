@@ -56,7 +56,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         formatControlsAndViews()
         
-        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. Once you've picked that image, the application returns you to the next screen."
+        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. Once you've picked that image, the application takes you to the next screen."
         
         //Set image with tap instruction for user and adjust it to scrollView size
         imageView.image = UIImage(named: "TapTower2")
@@ -123,6 +123,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+        directionsText.text = "If you're satisfied that this is the image you want to analyze, press the Go to Google Map button, which may allow you to locate the tower position accurately on the map. If this is not the image you want to analyze, press the Reset Application button to start over."
         
     }
     
@@ -168,15 +169,16 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         camera.towerLatitude = latitude
         camera.towerLongitude = longitude
         camera.towerElevation = elevation
+        
+        //Provide the next set of directions.
+        directionsText.text = "The slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower. Once you're satisfied the lines are positioned, press the Submit for Calculation button. The tower height will appear at the bottom."
+        
         print("Here's the delegate protocol function.")
     }
     
     //MARK: - Set the UISliders and add the measure subView
     /***************************************************************/
     func viewWithSliders() {
-        
-        //Provide the next set of directions.
-        directionsText.text = "Now that you see the image you want to analyze, the slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower."
         
         //Show the sliders, adjust to vertical and set their colors
         //topSlider.isHidden = false
@@ -205,7 +207,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         baseSlider.value = Float(containerView.frame.height)
         baseSlider.maximumValue = Float(containerView.bounds.height)
-        baseSlider.minimumValue = Float(containerView.bounds.height / 2)
+        baseSlider.minimumValue = Float(containerView.bounds.height / 2.5)
         
         
         let rect = CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height)
@@ -222,7 +224,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     @IBAction func topAdjust(_ sender: UISlider) {
         lines.topValue = sender.value
-        directionsText.text = "Once you're satisfied that the red and blue lines are properly positioned, press the Go to Map button"
+        
     }
     
     @IBAction func baseAdjust(_ sender: UISlider) {
@@ -239,6 +241,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         camera.gatherUserMeasurement(top: topSlider.value, bottom: baseSlider.value, imageHeight: containerView.bounds.height)
         print(topSlider.value, baseSlider.value, containerView.bounds.height)
         towerHeight.text = camera.towerAGL()
+        directionsText.text = "After you've gotten the tower height measure, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
     }
     
     

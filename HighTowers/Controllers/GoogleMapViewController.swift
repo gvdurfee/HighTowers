@@ -92,6 +92,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Populate the initial Map Directions text
+        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. The marker and map view will move to that location."
+        
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
         latitudeMinutes.delegate = self
@@ -135,7 +138,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     //Move the marker from the aircraft camera location to the estimated tower location.
     @objc func moveMarker() {
 
-        let gpsFormat = GPSFormat()
         let lat = gpsFormat.getDecimalDegreesLatitude(degrees: latitudeDegrees.text!, minutes: latitudeMinutes.text!)
         let lon = gpsFormat.getDecimalDegreesLongitude(degrees: longitudeDegrees.text!, minutes: longitudeMinutes.text!)
 
@@ -151,6 +153,8 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         marker.position = CLLocationCoordinate2DMake(lat, lon)
         marker.isDraggable = true
         marker.title = "Estimated Tower Location"
+        
+        mapDirectionsText.text = "The map and marker positions have now moved to the fly by estimate position. The map view has zoomed in a bit more. If you see the actual tower location, tap once at the base of the tower. The marker will move to that position; then press the Record Map Data button. If you don't see the tower, you can move around using the pan and zoom iPad functions. If you can't find the actual tower, it may not yet be recorded by Google; if this is the case, just tap inside one the text boxes you filled in below and press the Return key again, to use the fly by position instead. Then press the Record Map Data button."
         
         //Pass the tower location information when the view is dismissed.
         
@@ -200,10 +204,10 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation, Sending Coordinates & Prepare for Segue Back to the SelectedImageView
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//    }
     
     func getTowerLocationData(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
         
@@ -228,6 +232,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
                 //print(self.tower.getTowerProperties(tLat, tLon, tElev))
                 self.delegate?.transferTowerData(tLat, tLon, tElev)
                 
+                
             } else {
                 print("Error \(String(describing: response.result.error))")
                 self.mapDirectionsText.text = "Internet Connection Issues"
@@ -237,11 +242,10 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    //If Google Map data is used, the marker position will be used to populate the text fields with corridinates and tower elevation.
+    //If Google Map data is used, the marker position will be used to populate the text fields with coordinates.
     @IBAction func recordMapData(_ sender: UIButton) {
         
         self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
-        
         
         dismiss(animated: true, completion: nil)
     }
@@ -264,6 +268,8 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
         marker.position = coordinate
         marker.title = "Actual Tower Location"
+        
+        
         
         self.getTowerLocationData(coordinate.latitude, coordinate.longitude)
         

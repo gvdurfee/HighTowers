@@ -151,7 +151,6 @@ struct Camera {
         //print(targetBaseAltitude as Any)
         cameraAltAboveTargetBase = cameraAltitude! - targetBaseAltitude!
         let oppositeAngleRAD = atan(distanceToTowerBase! / cameraAltAboveTargetBase!)
-        print(cameraAltAboveTargetBase, distanceToTowerBase, oppositeAngleRAD)
         return oppositeAngleRAD
     }
     
