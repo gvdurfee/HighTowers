@@ -39,6 +39,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     //Instantiate a Camera and Tower objects to receive properties necessary to calculate the tower height
     lazy var camera = Camera.init()
     lazy var tower = Tower()
+    var gpsFormat = GPSFormat()
     
     //Lines is a Cocoa Touch file for configuring the measurement lines that allow the user to identify the top and base of the tower.
     var lines: Lines!
@@ -236,12 +237,24 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         appDelegate.resetApp()
     }
     
+    //This action finishes the tower height calculation and presents the results needed for the Survey Log.
     @IBAction func submitForCalculation(_ sender: UIButton) {
         
         camera.gatherUserMeasurement(top: topSlider.value, bottom: baseSlider.value, imageHeight: containerView.bounds.height)
         print(topSlider.value, baseSlider.value, containerView.bounds.height)
         towerHeight.text = camera.towerAGL()
-        directionsText.text = "After you've gotten the tower height measure, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
+        
+        //Prepare the information needed for the Survey Log entries.
+        let towerAGL = String(camera.towerAGL())
+        let towerBaseMSL = Int(camera.towerElevation!)
+        let towerLatitudeDecimal = camera.towerLatitude
+        let towerLatitude = gpsFormat.getDegreesLatitude(coordinate: towerLatitudeDecimal!)
+        let towerLongitudeDecimal = camera.towerLongitude
+        let towerLongitude = gpsFormat.getDegreesLongitude(coordinate: towerLongitudeDecimal!)
+        
+        //Change the final directions text to red and use the text field to display the results needed for the survey log.
+        directionsText.textColor = UIColor.red
+        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at \(towerBaseMSL)' MSL, Latitude: \(towerLatitude), Longitude: \(towerLongitude); you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
     }
     
     

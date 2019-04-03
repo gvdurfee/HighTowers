@@ -47,10 +47,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var recordMapData: UIButton!
     
-    @IBOutlet var sendCoordinatesManually: UIButton!
-    
-    @IBOutlet var sendCoordinatesFromMap: UIButton!
-    
     
     //These variables will hold the camera coordinates for the Google Map
     var passedLatitude: Double = 0.0
@@ -75,16 +71,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         recordMapData.clipsToBounds = true
         recordMapData.layer.borderWidth = 1
         recordMapData.layer.borderColor = UIColor.black.cgColor
-        
-        sendCoordinatesManually.layer.cornerRadius = 10
-        sendCoordinatesManually.clipsToBounds = true
-        sendCoordinatesManually.layer.borderWidth = 1
-        sendCoordinatesManually.layer.borderColor = UIColor.black.cgColor
-        
-        sendCoordinatesFromMap.layer.cornerRadius = 10
-        sendCoordinatesFromMap.clipsToBounds = true
-        sendCoordinatesFromMap.layer.borderWidth = 1
-        sendCoordinatesFromMap.layer.borderColor = UIColor.black.cgColor
         
         mapDirectionsText.layer.cornerRadius = 5
     }
