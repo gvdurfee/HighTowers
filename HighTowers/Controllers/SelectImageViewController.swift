@@ -37,8 +37,8 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     
     //Instantiate a Camera and Tower objects to receive properties necessary to calculate the tower height
-    lazy var camera = Camera.init()
-    lazy var tower = Tower()
+    var camera = Camera.init()
+    //var tower = Tower()
     var gpsFormat = GPSFormat()
     
     //Lines is a Cocoa Touch file for configuring the measurement lines that allow the user to identify the top and base of the tower.
@@ -158,6 +158,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let path = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.imageURL)] as? URL
         let imageSource = CGImageSourceCreateWithURL(path! as CFURL , nil)
         let selectedImageMetaData = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil)! as Dictionary<NSObject, AnyObject>
+        
         camera.extractMetaData(selectedImageMetaData)
         
         // Dismiss the viewController
@@ -255,7 +256,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         //Change the final directions text to red and use the text field to display the results needed for the survey log.
         directionsText.textColor = UIColor.red
-        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at \(towerBaseMSL)' MSL, Latitude: \(towerLatitude), Longitude: \(towerLongitude) and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
+        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at an elevation of \(towerBaseMSL)' MSL, Latitude:  \(towerLatitude), Longitude:  \(towerLongitude), and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
     }
     
     
