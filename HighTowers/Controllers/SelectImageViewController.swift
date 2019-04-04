@@ -57,7 +57,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         formatControlsAndViews()
         
-        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. Otherwise, the application will not work. Once you've picked that image, the application takes you to the next screen."
+        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. If there is no GPS information, the application will reset and return to this screen. If you've picked a relevant image, the application takes you to the next screen."
         
         //Set image with tap instruction for user and adjust it to scrollView size
         imageView.image = UIImage(named: "TapTower2")
@@ -159,7 +159,15 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let imageSource = CGImageSourceCreateWithURL(path! as CFURL , nil)
         let selectedImageMetaData = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil)! as Dictionary<NSObject, AnyObject>
         
+        //Test to know whether the image selected has necessary GPS information
+        guard selectedImageMetaData[kCGImagePropertyGPSDictionary] != nil else {
+            directionsText.text = "The image selected has no GPS information, and the calculation cannot be done."
+            appDelegate.resetApp()
+            
+            return
+        }
         camera.extractMetaData(selectedImageMetaData)
+        
         
         // Dismiss the viewController
         self.dismiss(animated: true, completion: nil)

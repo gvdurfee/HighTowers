@@ -17,7 +17,6 @@
 		C7BAF02921B826EC009E226E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02821B826EC009E226E /* Assets.xcassets */; };
 		C7BAF02C21B826EC009E226E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02A21B826EC009E226E /* LaunchScreen.storyboard */; };
 		C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A52210A19700F9CABA /* Camera.swift */; };
-		C7C1E6A82210A1AC00F9CABA /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A72210A1AC00F9CABA /* Tower.swift */; };
 		EA71296D04B30261C6DB0877 /* Pods_HighTowers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		C7BAF02B21B826EC009E226E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7BAF02D21B826EC009E226E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C1E6A52210A19700F9CABA /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		C7C1E6A72210A1AC00F9CABA /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighTowers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,7 +96,6 @@
 				C745D49421EE5C4800CF24BB /* HeightCalculator.swift */,
 				C727F88521E00E7B0067AE72 /* FormatText.swift */,
 				C7C1E6A52210A19700F9CABA /* Camera.swift */,
-				C7C1E6A72210A1AC00F9CABA /* Tower.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,7 +278,6 @@
 				C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */,
 				C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */,
 				C703E518223AC7B800772253 /* Lines.swift in Sources */,
-				C7C1E6A82210A1AC00F9CABA /* Tower.swift in Sources */,
 				C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */,
 				C73A74F32228852C000321BC /* GoogleMapViewController.swift in Sources */,
 				C745D49521EE5C4800CF24BB /* HeightCalculator.swift in Sources */,

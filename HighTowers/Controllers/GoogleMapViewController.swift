@@ -53,7 +53,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     var passedLongitude: Double = 0.0
     var passedBearing: Double = 0.0
     var marker = GMSMarker()
-    var tower = Tower()
     var timer = Timer()
     var gpsFormat = GPSFormat()
     
@@ -79,7 +78,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Populate the initial Map Directions text
-        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. The marker and map view will move to that location."
+        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. Be careful not to format latitude and longitude incorrectly BEFORE YOU Press THE RETURN KEY, or the application will disappear (crash) and you'll have to start over with the image you're trying to analyze. The marker and map view will move to that location."
         
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
@@ -187,13 +186,8 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // MARK: - Navigation, Sending Coordinates & Prepare for Segue Back to the SelectedImageView
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
+    // MARK: - JSON, Receiving Map Coordinates & Transfer Back to the SelectedImageView
+    /***************************************************************/
     
     func getTowerLocationData(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
         
