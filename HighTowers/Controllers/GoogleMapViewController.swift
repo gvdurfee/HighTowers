@@ -141,10 +141,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
         mapDirectionsText.text = "The map and marker positions have now moved to the fly by estimate position. The map view has zoomed in a bit more. If you see the actual tower location, tap once at the base of the tower. The marker will move to that position; then press the Record Map Data button. If you don't see the tower, you can move around using the pan and zoom iPad functions. If you can't find the actual tower, it may not yet be recorded by Google; if this is the case, just tap inside one the text boxes you filled in below and press the Return key again, to use the fly by position instead. Then press the Record Map Data button."
         
-        //Pass the tower location information when the view is dismissed.
-        
-        //tower.receiveTowerPosition(marker.position)
-        
     }
     
     //MARK: - Keyboard management functions and left to right order of manual filling of text fields.
@@ -229,14 +225,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
         dismiss(animated: true, completion: nil)
     }
-    //If Google Map data can't be used, then the coordinates and elevation will be passed with this control.
-    @IBAction func sendCoordinatesManually(_ sender: UIButton) {
-    }
-    
-    //If Google Map data is used, then the coordinates and elevation will be passed with this control.
-    @IBAction func sendCoordinatesFromMap(_ sender: UIButton) {
-        
-    }
     
 }
 extension GoogleMapViewController: GMSMapViewDelegate {
@@ -248,8 +236,6 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
         marker.position = coordinate
         marker.title = "Actual Tower Location"
-        
-        
         
         self.getTowerLocationData(coordinate.latitude, coordinate.longitude)
         

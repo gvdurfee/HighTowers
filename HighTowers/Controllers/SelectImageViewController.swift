@@ -261,10 +261,10 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let towerLongitudeDecimal = camera.towerLongitude
         let towerLongitude = gpsFormat.getDegreesLongitude(coordinate: towerLongitudeDecimal!)
         let bearingTrue = Int(camera.bearingToTower())
-        
+        let towerTopMSL = towerBaseMSL + Int(towerAGL)!
         //Change the final directions text to red and use the text field to display the results needed for the survey log.
         directionsText.textColor = UIColor.red
-        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower base is located at an elevation of \(towerBaseMSL)' MSL, Latitude:  \(towerLatitude), Longitude:  \(towerLongitude), and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
+        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower top is located at an elevation of \(towerTopMSL)' MSL, Latitude:  \(towerLatitude), Longitude:  \(towerLongitude), and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
     }
     
     
