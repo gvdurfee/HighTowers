@@ -217,7 +217,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         baseSlider.value = Float(containerView.frame.height)
         baseSlider.maximumValue = Float(containerView.bounds.height)
-        baseSlider.minimumValue = Float(containerView.bounds.height / 2.5)
+        baseSlider.minimumValue = Float(containerView.bounds.height / 2.75)
         
         
         let rect = CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height)
