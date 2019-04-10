@@ -202,7 +202,6 @@ struct Camera {
     /***************************************************************/
     mutating func towerAGL() -> String {
         
-        //let ninetyRAD = 90.0 * Double.pi/180
         let opposite: Double = oppositeAngle()
         
         //Since the height (in points) of a View is measured bottom to top, the ratios must conform allow a top to bottom measure of the image.

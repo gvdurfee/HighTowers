@@ -20,8 +20,6 @@ extension UIImagePickerController {
 //3. Add the GoogleMVCDelegate to the class. Note that the text color indicates a developer designed delegate instead of Swift source code.
 class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GoogleMVCDelegate {
     
-    
-    
     @IBOutlet var containerView: UIView!
     @IBOutlet var directionsText: UITextView!
     @IBOutlet var topSlider: UISlider!
@@ -149,10 +147,9 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         //Present the other controls and fields
         //towerHeight.isHidden = false
         //towerHeightLabel.isHidden = false
+        //submitForCalculation.isHidden = false
         resetApp.isHidden = false
         goToMap.isHidden = false
-        //submitForCalculation.isHidden = false
-        
         
         //Determine the URL for the image picked in order for the Camera Model to extract and use the relevant image metadata.
         let path = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.imageURL)] as? URL
@@ -179,6 +176,13 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         camera.towerLatitude = latitude
         camera.towerLongitude = longitude
         camera.towerElevation = elevation
+        
+        //Prepare to show controls and text once Google Map screen is dismissed.
+        topSlider.isHidden = false
+        baseSlider.isHidden = false
+        towerHeightLabel.isHidden = false
+        towerHeight.isHidden = false
+        submitForCalculation.isHidden = false
         
         //Provide the next set of directions.
         directionsText.text = "The slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower. Once you're satisfied the lines are positioned, press the Submit for Calculation button. The tower height will appear at the bottom."
@@ -262,6 +266,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let towerLongitude = gpsFormat.getDegreesLongitude(coordinate: towerLongitudeDecimal!)
         let bearingTrue = Int(camera.bearingToTower())
         let towerTopMSL = towerBaseMSL + Int(towerAGL)!
+        
         //Change the final directions text to red and use the text field to display the results needed for the survey log.
         directionsText.textColor = UIColor.red
         directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower top is located at an elevation of \(towerTopMSL)' MSL, Latitude:  \(towerLatitude), Longitude:  \(towerLongitude), and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
@@ -270,14 +275,8 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     @IBAction func goToMap(_ sender: UIButton) {
         
-        //Prepare to show controls and text once Google Map screen is dismissed.
-        topSlider.isHidden = false
-        baseSlider.isHidden = false
-        towerHeightLabel.isHidden = false
-        towerHeight.isHidden = false
-        submitForCalculation.isHidden = false
-        
         performSegue(withIdentifier: "goToMap", sender: self)
+                
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -205,13 +205,12 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
                 let elevationJSON: JSON = JSON(response.result.value!)
                 print(elevationJSON)
                 
-                //Pass the tower data to the Tower Model
+                //Parse and pass the tower data to the Tower Model
                 let tLat = elevationJSON["results"][0]["location"]["lat"].doubleValue
                 let tLon = elevationJSON["results"][0]["location"]["lng"].doubleValue
                 let tElev = elevationJSON["results"][0]["elevation"].doubleValue * 3.28084
                 
                 //5. self.tower.getTowerProperties(tLat, tLon, tElev)
-                //print(self.tower.getTowerProperties(tLat, tLon, tElev))
                 self.delegate?.transferTowerData(tLat, tLon, tElev)
                 
                 
