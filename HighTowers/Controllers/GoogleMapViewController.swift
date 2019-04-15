@@ -238,8 +238,11 @@ extension GoogleMapViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
-        google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
+        
+        //Move the marker to the tap position, then re-center the map.
         marker.position = coordinate
+        google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
+        
         marker.title = "Actual Tower Location"
         
         self.getTowerLocationData(coordinate.latitude, coordinate.longitude)

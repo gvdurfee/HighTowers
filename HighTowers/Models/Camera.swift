@@ -214,7 +214,7 @@ struct Camera {
         
         let tiltAngle = opposite - beta1
         
-        let towerHeight =  Int(cameraAltAboveTargetBase! * abs((1 - ((tan(tiltAngle + beta1))/(tan(tiltAngle + beta2))))))
+        let towerHeight =  Int(cameraAltAboveTargetBase! * (1 - ((tan(tiltAngle + beta1))/(tan(tiltAngle + beta2)))))
         print(cameraAltAboveTargetBase!, tiltAngle, beta1, beta2, towerHeight)
         return String(towerHeight)
         
