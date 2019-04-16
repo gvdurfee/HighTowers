@@ -137,8 +137,9 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
         imageView.image = image
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         containerView.addSubview(imageView)
+        
         imageView.bounds = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
         
         //Add the custon Lines view to create a measurement overlay for the selected image.
@@ -155,6 +156,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         let path = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.imageURL)] as? URL
         let imageSource = CGImageSourceCreateWithURL(path! as CFURL , nil)
         let selectedImageMetaData = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil)! as Dictionary<NSObject, AnyObject>
+        print(selectedImageMetaData)
         
         //Test to know whether the image selected has necessary GPS information
         guard selectedImageMetaData[kCGImagePropertyGPSDictionary] != nil else {
