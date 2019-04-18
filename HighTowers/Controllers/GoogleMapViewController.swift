@@ -43,6 +43,8 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var mapDirectionsText: UITextView!
     
+    @IBOutlet var coordinateContainer: UIView!
+    
     //Prepare Buttons for round corners and borders
     
     @IBOutlet var recordMapData: UIButton!
@@ -71,7 +73,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         recordMapData.layer.borderWidth = 1
         recordMapData.layer.borderColor = UIColor.black.cgColor
         
+        //Adjust Direction Text and Coordinate Container views to have rounded corners
         mapDirectionsText.layer.cornerRadius = 5
+        coordinateContainer.layer.cornerRadius = 5
     }
     
     override func viewDidLoad() {
@@ -245,10 +249,6 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         
         marker.title = "Actual Tower Location"
         
-        self.getTowerLocationData(coordinate.latitude, coordinate.longitude)
-        
-        //Call the getTowerLocationData function to gather tower position data
-        self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
     }
 }
 
