@@ -82,7 +82,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Populate the initial Map Directions text
-        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. Be careful not to format latitude and longitude incorrectly BEFORE YOU Press THE RETURN KEY, or the application will disappear (crash) and you'll have to start over with the image you're trying to analyze. The marker and map view will move to that location."
+        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. If you don't have 'fly by' coordinates, zoom and pan to find the tower on the map, then tap on the location. The marker and map view will move to that location; then press 'Record Map Data'."
         
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self

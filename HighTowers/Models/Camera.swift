@@ -187,7 +187,7 @@ struct Camera {
         let focalLengthRAD = cameraFocalLength! * Double.pi / 180
         
         let aov = 2 * atan(verticalLength / (2 * focalLengthRAD))
-        print(verticalLength, focalLengthRAD, aov)
+        //print(verticalLength, focalLengthRAD, aov)
         return aov
         
     }
@@ -210,14 +210,14 @@ struct Camera {
         
         let beta1 = angleOfView(focalLength: cameraFocalLength!) * beta1Ratio
         let beta2 = angleOfView(focalLength: cameraFocalLength!) * beta2Ratio
-        print(beta1, beta2, beta1Ratio, beta2Ratio)
+        
         
         let tiltAngle = opposite - beta1
         
+        //This is the standard calculation for towerHeight is greater than 10% of cameraAltAboveTargetBase
         let towerHeight =  Int(cameraAltAboveTargetBase! * (1 - ((tan(tiltAngle + beta1))/(tan(tiltAngle + beta2)))))
-        print(cameraAltAboveTargetBase!, tiltAngle, beta1, beta2, towerHeight)
-        return String(towerHeight)
         
+            return String(towerHeight)
     }
 }
 

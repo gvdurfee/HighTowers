@@ -256,7 +256,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     @IBAction func submitForCalculation(_ sender: UIButton) {
         
         camera.gatherUserMeasurement(top: topSlider.value, bottom: baseSlider.value, imageHeight: containerView.bounds.height)
-        print(topSlider.value, baseSlider.value, containerView.bounds.height)
+        //print(topSlider.value, baseSlider.value, containerView.bounds.height)
         towerHeight.text = camera.towerAGL()
         
         //Prepare the information needed for the Survey Log entries.
