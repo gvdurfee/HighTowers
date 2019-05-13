@@ -55,7 +55,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         formatControlsAndViews()
         
-        directionsText.text = "This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. If there is no GPS information, the application will reset and return to this screen. If you've picked a relevant image, the application takes you to the next screen."
+        directionsText.text = #"This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. If there is no GPS information, the application will reset and return to this screen. If you've picked a relevant image, the application takes you to the next screen."#
         
         //Set image with tap instruction for user and adjust it to scrollView size
         imageView.image = UIImage(named: "TapTower2")
@@ -122,7 +122,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        directionsText.text = "If you're satisfied that this is the image you want to analyze, press the Go to Google Map button, which may allow you to locate the tower position accurately on the map. If this is not the image you want to analyze, press the Reset Application button to start over."
+        directionsText.text = #"If you're satisfied that this is the image you want to analyze, press the "Go to Google Map" button, which may allow you to locate the tower position accurately on the map. If this is not the image you want to analyze, press the "Reset Application" button to start over."#
         
     }
     
@@ -187,7 +187,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         submitForCalculation.isHidden = false
         
         //Provide the next set of directions.
-        directionsText.text = "The slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower. Once you're satisfied the lines are positioned, press the Submit for Calculation button. The tower height will appear at the bottom."
+        directionsText.text = #"The slider controls on either side will allow you to set a couple of measurement points. When you touch the red circle on the left and pull it down, a red line begins to descend from the top. Position the red line on the top of the tower in the image. Repeat this process on the right slider control by moving the blue line up to the base of the tower. Once you're satisfied the lines are positioned, press the "Submit for Calculation" button."#
         
         print("Here's the delegate protocol function.")
     }
@@ -271,7 +271,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         
         //Change the final directions text to red and use the text field to display the results needed for the survey log.
         directionsText.textColor = UIColor.red
-        directionsText.text = " This tower is estimated to be \(towerAGL)' AGL. The tower top is located at an elevation of \(towerTopMSL)' MSL, Latitude:  \(towerLatitude), Longitude:  \(towerLongitude), and the true bearing from the camera to the tower was \(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the Reset Application to choose another image to analyze, or quit the application if you're done."
+        directionsText.text = #"This tower is estimated to be \#(towerAGL)' AGL. The tower top is located at an elevation of \#(towerTopMSL)' MSL, Latitude:  \#(towerLatitude), Longitude:  \#(towerLongitude), and the true bearing from the camera to the tower was \#(bearingTrue)°; you can use this information to fill out the entries needed for the Survey Log. Afterward, you can press the "Reset Application" to choose another image to analyze, or quit the application if you're done."#
     }
     
     

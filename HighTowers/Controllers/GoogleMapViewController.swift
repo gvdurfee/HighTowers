@@ -82,7 +82,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Populate the initial Map Directions text
-        mapDirectionsText.text = "The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the Return key on the keyboard. If you don't have 'fly by' coordinates, zoom and pan to find the tower on the map, then tap on the location. The marker and map view will move to that location; then press 'Record Map Data'."
+        mapDirectionsText.text = #"The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the "Return" key on the keyboard. If you don't have "fly by" coordinates, zoom and pan to find the tower on the map, then tap on the location you see on the map. The marker and map view will move to that location; then press "Record Map Data"."#
         
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
@@ -149,7 +149,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         marker.isDraggable = true
         marker.title = "Estimated Tower Location"
         
-        mapDirectionsText.text = "The map and marker positions have now moved to the fly by estimate position. The map view has zoomed in a bit more. If you see the actual tower location, tap once at the base of the tower. The marker will move to that position; then press the Record Map Data button. If you don't see the tower, you can move around using the pan and zoom iPad functions. If you can't find the actual tower, it may not yet be recorded by Google; if this is the case, just tap inside one the text boxes you filled in below and press the Return key again, to use the fly by position instead. Then press the Record Map Data button."
+        mapDirectionsText.text = #"The map and marker positions have now moved to the "fly by" estimate position. The map view has zoomed in a bit more. If you see the actual tower location, tap once at the base of the tower. The marker will move to that position; then press the "Record Map Data" button. If you don't see the tower, you can move around using the pan and zoom iPad functions. If you can't find the actual tower, it may not yet be recorded by Google; if this is the case, just tap inside one the text boxes you filled in below and press the "Return" key again, to use the "fly by" position instead. Then press the "Record Map Data" button."#
         
     }
     
