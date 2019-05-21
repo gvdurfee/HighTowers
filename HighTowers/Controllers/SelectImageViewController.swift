@@ -36,7 +36,6 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
     
     //Instantiate a Camera and Tower objects to receive properties necessary to calculate the tower height
     var camera = Camera.init()
-    //var tower = Tower()
     var gpsFormat = GPSFormat()
     
     //Lines is a Cocoa Touch file for configuring the measurement lines that allow the user to identify the top and base of the tower.
