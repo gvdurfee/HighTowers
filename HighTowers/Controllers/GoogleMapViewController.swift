@@ -91,10 +91,10 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         longitudeMinutes.delegate = self
         
         //Selecting this keyboard type for the four text fields frees the user from having to tap the "123" button each time a text field is selected.
-        latitudeDegrees.keyboardType = .asciiCapableNumberPad
-        latitudeMinutes.keyboardType = .asciiCapableNumberPad
-        longitudeDegrees.keyboardType = .asciiCapableNumberPad
-        longitudeMinutes.keyboardType = .asciiCapableNumberPad
+        latitudeDegrees.keyboardType = .decimalPad
+        latitudeMinutes.keyboardType = .decimalPad
+        longitudeDegrees.keyboardType = .decimalPad
+        longitudeMinutes.keyboardType = .decimalPad
         
         //Keyboard observer
         let notificationCenter = NotificationCenter.default
