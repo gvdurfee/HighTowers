@@ -20,6 +20,7 @@ import Alamofire
 
 
 
+
 class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     
     //2. Declare the delegate variable
@@ -192,7 +193,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // MARK: - JSON, Receiving Map Coordinates & Transfer Back to the SelectedImageView
+    
+    
+    // MARK: - JSON, Receiving Map Coordinates & Transfer Back to the SelectedImageViewController
     /***************************************************************/
     
     func getTowerLocationData(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
@@ -224,7 +227,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
     
     
     //If Google Map data is used, the marker position will be used to populate the text fields with coordinates.
