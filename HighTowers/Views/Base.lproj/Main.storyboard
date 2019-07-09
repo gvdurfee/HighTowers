@@ -225,8 +225,9 @@ Google Map</string>
                                         <rect key="frame" x="20" y="637" width="984" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI2-dC-czb">
-                                                <rect key="frame" x="69" y="11" width="89.5" height="33"/>
+                                                <rect key="frame" x="69" y="11" width="90" height="33"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="gER-I1-a6A"/>
                                                     <constraint firstAttribute="height" constant="33" id="npJ-FM-JOh"/>
                                                 </constraints>
                                                 <string key="text">Tower Latitude
@@ -238,17 +239,18 @@ Google Map</string>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="z52-ov-yPo">
                                                 <rect key="frame" x="43" y="56" width="60" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="9gv-2E-aYK"/>
-                                                    <constraint firstAttribute="width" constant="60" id="JIY-ji-glQ"/>
+                                                    <constraint firstAttribute="width" constant="60" id="6zr-GU-BFd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="checkLatDegValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="JpG-fv-UpW"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgn-6R-3yo">
                                                 <rect key="frame" x="10" y="56" width="23" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="TXc-Sz-tZE"/>
-                                                    <constraint firstAttribute="width" constant="23" id="WUy-am-BOC"/>
+                                                    <constraint firstAttribute="width" constant="23" id="vhO-Py-YkP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
@@ -256,18 +258,18 @@ Google Map</string>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k8J-fd-YfY">
                                                 <rect key="frame" x="784" y="56" width="70" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="0Za-d8-Gjq"/>
-                                                    <constraint firstAttribute="width" constant="70" id="ax9-K5-C4g"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="kf4-9P-ktI"/>
+                                                    <constraint firstAttribute="width" constant="70" id="n8E-7c-7ff"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="checkLongDegValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="6sE-ye-PTB"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szx-oM-uk9">
                                                 <rect key="frame" x="753" y="56" width="23" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Whg-bY-nRp"/>
-                                                    <constraint firstAttribute="width" constant="23" id="cU8-Hs-NSJ"/>
+                                                    <constraint firstAttribute="width" constant="23" id="LnX-T7-MTT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
@@ -275,24 +277,29 @@ Google Map</string>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BKz-cp-OIX">
                                                 <rect key="frame" x="864" y="56" width="100" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="T4k-da-YaH"/>
-                                                    <constraint firstAttribute="height" constant="30" id="tQQ-RA-6T5"/>
+                                                    <constraint firstAttribute="width" constant="100" id="DXv-Dr-p7q"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="checkLongMinValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="g09-Uz-4Nh"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NVt-xp-WxD">
                                                 <rect key="frame" x="113" y="56" width="100" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Fxc-Jo-lnP"/>
-                                                    <constraint firstAttribute="width" constant="100" id="lL0-MH-L3i"/>
+                                                    <constraint firstAttribute="width" constant="100" id="nmX-Pq-HTH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="checkLatMinValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="J1b-zm-Bqq"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-vh-hd6">
                                                 <rect key="frame" x="792" y="10" width="156" height="34"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="Chf-1u-P2O"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="GK9-io-e7N"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="sbv-y0-A62"/>
                                                     <constraint firstAttribute="height" constant="34" id="yke-qC-3SD"/>
@@ -309,28 +316,27 @@ Google Map</string>
                                         <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="DI2-dC-czb" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="11" id="0ub-cf-ED9"/>
+                                            <constraint firstItem="BKz-cp-OIX" firstAttribute="leading" secondItem="k8J-fd-YfY" secondAttribute="trailing" constant="10" id="1Bd-4S-Urg"/>
                                             <constraint firstItem="GuO-vh-hd6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DI2-dC-czb" secondAttribute="trailing" constant="8" symbolic="YES" id="1yk-7p-9ra"/>
-                                            <constraint firstAttribute="trailing" secondItem="BKz-cp-OIX" secondAttribute="trailing" constant="20" id="2S1-kK-EQG"/>
-                                            <constraint firstItem="k8J-fd-YfY" firstAttribute="leading" secondItem="szx-oM-uk9" secondAttribute="trailing" constant="8" id="5ll-15-xkN"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="firstBaseline" secondItem="Jgn-6R-3yo" secondAttribute="firstBaseline" id="APx-BA-Fa7"/>
                                             <constraint firstAttribute="trailing" secondItem="GuO-vh-hd6" secondAttribute="trailing" constant="36" id="ArR-QE-jbR"/>
-                                            <constraint firstAttribute="bottom" secondItem="k8J-fd-YfY" secondAttribute="bottom" constant="14" id="Bqy-XR-DPF"/>
-                                            <constraint firstAttribute="bottom" secondItem="szx-oM-uk9" secondAttribute="bottom" constant="14" id="Gbb-84-4B4"/>
-                                            <constraint firstItem="szx-oM-uk9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NVt-xp-WxD" secondAttribute="trailing" constant="8" symbolic="YES" id="IVM-WT-dOJ"/>
-                                            <constraint firstItem="z52-ov-yPo" firstAttribute="leading" secondItem="Jgn-6R-3yo" secondAttribute="trailing" constant="10" id="KO7-hx-X9P"/>
+                                            <constraint firstItem="z52-ov-yPo" firstAttribute="leading" secondItem="Jgn-6R-3yo" secondAttribute="trailing" constant="10" id="D8n-QH-0SS"/>
                                             <constraint firstItem="DI2-dC-czb" firstAttribute="leading" secondItem="HEG-Bp-bop" secondAttribute="leading" constant="69" id="OyJ-46-Ghw"/>
                                             <constraint firstAttribute="height" constant="100" id="RDV-0B-sbb"/>
                                             <constraint firstItem="GuO-vh-hd6" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="10" id="SAF-js-rMV"/>
-                                            <constraint firstItem="NVt-xp-WxD" firstAttribute="leading" secondItem="z52-ov-yPo" secondAttribute="trailing" constant="10" id="SEx-J9-Fw9"/>
-                                            <constraint firstItem="BKz-cp-OIX" firstAttribute="leading" secondItem="k8J-fd-YfY" secondAttribute="trailing" constant="10" id="SXP-Cr-PQ4"/>
-                                            <constraint firstAttribute="bottom" secondItem="Jgn-6R-3yo" secondAttribute="bottom" constant="14" id="X7o-SD-DMs"/>
-                                            <constraint firstAttribute="bottom" secondItem="BKz-cp-OIX" secondAttribute="bottom" constant="14" id="Z01-zU-yMs"/>
-                                            <constraint firstItem="BKz-cp-OIX" firstAttribute="leading" secondItem="k8J-fd-YfY" secondAttribute="trailing" constant="10" id="gYe-ie-ZoQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="NVt-xp-WxD" secondAttribute="bottom" constant="14" id="gfy-w6-UfG"/>
-                                            <constraint firstItem="Jgn-6R-3yo" firstAttribute="leading" secondItem="HEG-Bp-bop" secondAttribute="leading" constant="10" id="htx-Ho-fWY"/>
-                                            <constraint firstItem="GuO-vh-hd6" firstAttribute="leading" secondItem="k8J-fd-YfY" secondAttribute="leading" constant="8" id="q8f-aE-g2y"/>
-                                            <constraint firstAttribute="bottom" secondItem="z52-ov-yPo" secondAttribute="bottom" constant="14" id="qkF-3F-QyR"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NVt-xp-WxD" secondAttribute="trailing" constant="8" symbolic="YES" id="UQ5-j6-pDc"/>
+                                            <constraint firstAttribute="trailing" secondItem="BKz-cp-OIX" secondAttribute="trailing" constant="20" id="WVu-Si-rkJ"/>
+                                            <constraint firstItem="NVt-xp-WxD" firstAttribute="leading" secondItem="z52-ov-yPo" secondAttribute="trailing" constant="10" id="YSU-6j-euw"/>
+                                            <constraint firstItem="Jgn-6R-3yo" firstAttribute="leading" secondItem="HEG-Bp-bop" secondAttribute="leading" constant="10" id="cma-VR-AnJ"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="baseline" secondItem="Jgn-6R-3yo" secondAttribute="baseline" id="e6V-iF-FSo"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="top" secondItem="k8J-fd-YfY" secondAttribute="top" id="eFP-zN-0Cd"/>
+                                            <constraint firstItem="k8J-fd-YfY" firstAttribute="leading" secondItem="szx-oM-uk9" secondAttribute="trailing" constant="8" symbolic="YES" id="iFI-gl-WK9"/>
+                                            <constraint firstItem="NVt-xp-WxD" firstAttribute="baseline" secondItem="z52-ov-yPo" secondAttribute="baseline" id="qtY-BT-LVk"/>
                                             <constraint firstItem="GuO-vh-hd6" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="10" id="r3e-8a-Bru"/>
-                                            <constraint firstAttribute="bottom" secondItem="k8J-fd-YfY" secondAttribute="bottom" constant="14" id="sCd-Id-ns8"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="bottom" secondItem="k8J-fd-YfY" secondAttribute="bottom" id="sAx-3J-33Q"/>
+                                            <constraint firstItem="k8J-fd-YfY" firstAttribute="baseline" secondItem="NVt-xp-WxD" secondAttribute="baseline" id="w1i-FO-Lnr"/>
+                                            <constraint firstItem="szx-oM-uk9" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="56" id="ykx-02-uV8"/>
+                                            <constraint firstItem="BKz-cp-OIX" firstAttribute="baseline" secondItem="k8J-fd-YfY" secondAttribute="baseline" id="z2O-cD-GAN"/>
                                         </constraints>
                                     </view>
                                 </subviews>

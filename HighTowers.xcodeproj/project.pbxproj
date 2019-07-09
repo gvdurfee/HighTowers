@@ -11,6 +11,9 @@
 		C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703E517223AC7B800772253 /* SelectImageViewController.swift */; };
 		C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727F88521E00E7B0067AE72 /* FormatText.swift */; };
 		C73A74F32228852C000321BC /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73A74F22228852C000321BC /* GoogleMapViewController.swift */; };
+		C73B78C022D3D86A0093B346 /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B78BF22D3D86A0093B346 /* RegisterData.swift */; };
+		C73B78C522D3D8C00093B346 /* UITextField Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B78C422D3D8C00093B346 /* UITextField Extensions.swift */; };
+		C73B78C822D3D8DC0093B346 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B78C722D3D8DC0093B346 /* Validators.swift */; };
 		C745D49521EE5C4800CF24BB /* HeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C745D49421EE5C4800CF24BB /* HeightCalculator.swift */; };
 		C7BAF02221B826EB009E226E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BAF02121B826EB009E226E /* AppDelegate.swift */; };
 		C7BAF02721B826EB009E226E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02521B826EB009E226E /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 		C703E517223AC7B800772253 /* SelectImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C727F88521E00E7B0067AE72 /* FormatText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatText.swift; sourceTree = "<group>"; };
 		C73A74F22228852C000321BC /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
+		C73B78BF22D3D86A0093B346 /* RegisterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
+		C73B78C422D3D8C00093B346 /* UITextField Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField Extensions.swift"; sourceTree = "<group>"; };
+		C73B78C722D3D8DC0093B346 /* Validators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		C745D49421EE5C4800CF24BB /* HeightCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightCalculator.swift; sourceTree = "<group>"; };
 		C7BAF01E21B826EB009E226E /* HighTowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighTowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BAF02121B826EB009E226E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +65,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C73B78C322D3D8A90093B346 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C73B78C422D3D8C00093B346 /* UITextField Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C73B78C622D3D8CB0093B346 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				C73B78C722D3D8DC0093B346 /* Validators.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		C7BAF01521B826EB009E226E = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +102,8 @@
 		C7BAF02021B826EB009E226E /* HighTowers */ = {
 			isa = PBXGroup;
 			children = (
+				C73B78C622D3D8CB0093B346 /* Validation */,
+				C73B78C322D3D8A90093B346 /* Extensions */,
 				C7BAF03321B83144009E226E /* Models */,
 				C7BAF03421B83150009E226E /* Views */,
 				C7BAF03521B8315D009E226E /* Controllers */,
@@ -93,6 +117,7 @@
 		C7BAF03321B83144009E226E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C73B78BF22D3D86A0093B346 /* RegisterData.swift */,
 				C745D49421EE5C4800CF24BB /* HeightCalculator.swift */,
 				C727F88521E00E7B0067AE72 /* FormatText.swift */,
 				C7C1E6A52210A19700F9CABA /* Camera.swift */,
@@ -275,12 +300,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73B78C522D3D8C00093B346 /* UITextField Extensions.swift in Sources */,
 				C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */,
 				C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */,
 				C703E518223AC7B800772253 /* Lines.swift in Sources */,
 				C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */,
+				C73B78C022D3D86A0093B346 /* RegisterData.swift in Sources */,
 				C73A74F32228852C000321BC /* GoogleMapViewController.swift in Sources */,
 				C745D49521EE5C4800CF24BB /* HeightCalculator.swift in Sources */,
+				C73B78C822D3D8DC0093B346 /* Validators.swift in Sources */,
 				C7BAF02221B826EB009E226E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

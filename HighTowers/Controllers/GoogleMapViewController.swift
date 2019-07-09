@@ -73,7 +73,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         recordMapData.clipsToBounds = true
         recordMapData.layer.borderWidth = 1
         recordMapData.layer.borderColor = UIColor.black.cgColor
-        
+
         //Adjust Direction Text and Coordinate Container views to have rounded corners
         mapDirectionsText.layer.cornerRadius = 5
         coordinateContainer.layer.cornerRadius = 5
@@ -83,7 +83,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Populate the initial Map Directions text
-        mapDirectionsText.text = #"The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by; then press the "Return" key on the keyboard. If you don't have "fly by" coordinates, zoom and pan to find the tower on the map, then tap on the location you see on the map. The marker and map view will move to that location; then press "Record Map Data"."#
+        mapDirectionsText.text = #"The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the tower location, when you flew by (it's important to populate the text fields properly - no decimal points in Latitude or Longitude fields and the 4 numbers and decimal point for "MM.mm" format); then press the "Return" key on the keyboard. You can then zoom and pan, if necessary, to find the tower on the map, then tap on the location you see on the map. The marker and map view will move to that location; then press "Record Map Data"."#
         
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
@@ -110,6 +110,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         google_Map.camera = camera
         google_Map.mapType = .hybrid
         google_Map.delegate = self
+        
+        // Initial state is disabled to make sure the user puts in "fly-by" coordinates
+        recordMapData.isEnabled = false
 
     }
     
@@ -172,6 +175,13 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //Make sure that only keyboard numbers and decimal point are the only characters availble to the user
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = "01234567890."
+        let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharacterSet = CharacterSet(charactersIn: string)
+        return allowedCharacterSet.isSuperset(of: typedCharacterSet)
+    }
     
     //Establish the order of filling text fields when only manually entered information is avaliable. User's information is loaded left to right and the keyboard is dismissed after longitudeMinutes is loaded.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -191,6 +201,31 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         moveMarker()
         return true
         
+    }
+    
+    //MARK: - Validation and Alert Messaging
+    /***************************************************************/
+    
+    //The magic happens here for validating user input text
+    func validate() {
+        do {
+            let latDegrees = try latitudeDegrees.validatedText(validationType: ValidatorType.latitudeDegrees)
+            let latMinutes = try latitudeMinutes.validatedText(validationType: ValidatorType.latitudeMinutes)
+            let longDegrees = try longitudeDegrees.validatedText(validationType: ValidatorType.longitudeDegrees)
+            let longMinutes = try longitudeMinutes.validatedText(validationType: ValidatorType.longitudeMinutes)
+            let data = RegisterData(latDegrees: latDegrees, latMinutes: latMinutes, longDegrees: longDegrees, longMinutes: longMinutes)
+            print(data)
+        } catch(let error) {
+            showAlert(for: (error as! ValidationError).message)
+        }
+    }
+    
+    //This brings up an Alert with a message appropriate for the user to make the necessary correction.
+    func showAlert(for alert: String) {
+        let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     
@@ -228,16 +263,37 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - UITextField actions for validating user input constraints
+    /***************************************************************/
     
+    @IBAction func checkLatDegValid(_ sender: UITextField) {
+        //validate()
+    }
+    
+    @IBAction func checkLatMinValid(_ sender: UITextField) {
+        //validate()
+    }
+    
+    @IBAction func checkLongDegValid(_ sender: UITextField) {
+        //validate()
+    }
+    
+    @IBAction func checkLongMinValid(_ sender: UITextField) {
+        validate()
+        recordMapData.isEnabled = true
+    }
     //If Google Map data is used, the marker position will be used to populate the text fields with coordinates.
     @IBAction func recordMapData(_ sender: UIButton) {
-        
+    
         self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
         
         dismiss(animated: true, completion: nil)
     }
     
 }
+
+// MARK: - GoogleMapViewController extension
+/***************************************************************/
 extension GoogleMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("Clicked on Marker")
