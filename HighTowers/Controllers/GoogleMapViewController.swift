@@ -215,6 +215,8 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
             let longMinutes = try longitudeMinutes.validatedText(validationType: ValidatorType.longitudeMinutes)
             let data = RegisterData(latDegrees: latDegrees, latMinutes: latMinutes, longDegrees: longDegrees, longMinutes: longMinutes)
             print(data)
+            recordMapData.isEnabled = true
+            
         } catch(let error) {
             showAlert(for: (error as! ValidationError).message)
         }
@@ -267,24 +269,40 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     /***************************************************************/
     
     @IBAction func checkLatDegValid(_ sender: UITextField) {
-        //validate()
+        if latitudeDegrees.text == nil {
+        validate()
+        } else if latitudeDegrees.text != nil {
+            validate()
+        }
     }
     
     @IBAction func checkLatMinValid(_ sender: UITextField) {
-        //validate()
+        if latitudeMinutes.text == nil {
+            validate()
+        } else if latitudeMinutes.text != nil {
+            validate()
+        }
     }
     
     @IBAction func checkLongDegValid(_ sender: UITextField) {
-        //validate()
+        if longitudeDegrees.text == nil {
+            validate()
+        } else if longitudeDegrees.text != nil {
+            validate()
+        }
     }
     
     @IBAction func checkLongMinValid(_ sender: UITextField) {
-        validate()
-        recordMapData.isEnabled = true
+        if longitudeMinutes.text == nil {
+            validate()
+        } else if longitudeMinutes.text != nil {
+            validate()
+        }
     }
     //If Google Map data is used, the marker position will be used to populate the text fields with coordinates.
     @IBAction func recordMapData(_ sender: UIButton) {
     
+        
         self.getTowerLocationData(marker.position.latitude, marker.position.longitude)
         
         dismiss(animated: true, completion: nil)
