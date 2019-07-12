@@ -196,7 +196,7 @@ Google Map</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="ovd-ka-e9m"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGS-6Y-ZRF" customClass="GMSMapView">
@@ -218,7 +218,7 @@ Google Map</string>
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="recordMapData:" destination="UvM-Mk-hMs" eventType="touchUpInside" id="eFN-Wo-oe0"/>
+                                            <action selector="recordMapData:" destination="UvM-Mk-hMs" eventType="touchUpInside" id="ytL-7M-mgv"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEG-Bp-bop">
@@ -243,9 +243,6 @@ Google Map</string>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <action selector="checkLatDegValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="JpG-fv-UpW"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgn-6R-3yo">
                                                 <rect key="frame" x="10" y="56" width="23" height="30"/>
@@ -262,9 +259,6 @@ Google Map</string>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <action selector="checkLongDegValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="6sE-ye-PTB"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szx-oM-uk9">
                                                 <rect key="frame" x="753" y="56" width="23" height="30"/>
@@ -281,9 +275,6 @@ Google Map</string>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <action selector="checkLongMinValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="g09-Uz-4Nh"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NVt-xp-WxD">
                                                 <rect key="frame" x="113" y="56" width="100" height="30"/>
@@ -292,9 +283,6 @@ Google Map</string>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <action selector="checkLatMinValid:" destination="UvM-Mk-hMs" eventType="editingDidEnd" id="J1b-zm-Bqq"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-vh-hd6">
                                                 <rect key="frame" x="792" y="10" width="156" height="34"/>
@@ -312,6 +300,21 @@ Google Map</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jod-q9-82N">
+                                                <rect key="frame" x="434.5" y="26" width="115" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="cfp-0X-2ON"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                                <state key="normal">
+                                                    <string key="title">Validate Fly-By
+   Coordinates</string>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="validateFlyBy:" destination="UvM-Mk-hMs" eventType="touchUpInside" id="Aej-Wk-Ovn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -322,6 +325,7 @@ Google Map</string>
                                             <constraint firstAttribute="trailing" secondItem="GuO-vh-hd6" secondAttribute="trailing" constant="36" id="ArR-QE-jbR"/>
                                             <constraint firstItem="z52-ov-yPo" firstAttribute="leading" secondItem="Jgn-6R-3yo" secondAttribute="trailing" constant="10" id="D8n-QH-0SS"/>
                                             <constraint firstItem="DI2-dC-czb" firstAttribute="leading" secondItem="HEG-Bp-bop" secondAttribute="leading" constant="69" id="OyJ-46-Ghw"/>
+                                            <constraint firstItem="Jod-q9-82N" firstAttribute="centerX" secondItem="HEG-Bp-bop" secondAttribute="centerX" id="Pfe-xk-Lfa"/>
                                             <constraint firstAttribute="height" constant="100" id="RDV-0B-sbb"/>
                                             <constraint firstItem="GuO-vh-hd6" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="10" id="SAF-js-rMV"/>
                                             <constraint firstItem="szx-oM-uk9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NVt-xp-WxD" secondAttribute="trailing" constant="8" symbolic="YES" id="UQ5-j6-pDc"/>
@@ -331,6 +335,7 @@ Google Map</string>
                                             <constraint firstItem="szx-oM-uk9" firstAttribute="baseline" secondItem="Jgn-6R-3yo" secondAttribute="baseline" id="e6V-iF-FSo"/>
                                             <constraint firstItem="szx-oM-uk9" firstAttribute="top" secondItem="k8J-fd-YfY" secondAttribute="top" id="eFP-zN-0Cd"/>
                                             <constraint firstItem="k8J-fd-YfY" firstAttribute="leading" secondItem="szx-oM-uk9" secondAttribute="trailing" constant="8" symbolic="YES" id="iFI-gl-WK9"/>
+                                            <constraint firstItem="Jod-q9-82N" firstAttribute="centerY" secondItem="HEG-Bp-bop" secondAttribute="centerY" id="ieB-kj-b4I"/>
                                             <constraint firstItem="NVt-xp-WxD" firstAttribute="baseline" secondItem="z52-ov-yPo" secondAttribute="baseline" id="qtY-BT-LVk"/>
                                             <constraint firstItem="GuO-vh-hd6" firstAttribute="top" secondItem="HEG-Bp-bop" secondAttribute="top" constant="10" id="r3e-8a-Bru"/>
                                             <constraint firstItem="szx-oM-uk9" firstAttribute="bottom" secondItem="k8J-fd-YfY" secondAttribute="bottom" id="sAx-3J-33Q"/>
@@ -378,6 +383,7 @@ Google Map</string>
                         <outlet property="mapDirectionsText" destination="58Y-hW-Vm8" id="JqT-Lp-KDe"/>
                         <outlet property="recordMapData" destination="tj9-De-Fe7" id="Yl4-qM-P0X"/>
                         <outlet property="scrollView" destination="pO1-XO-c1m" id="SlL-io-HUN"/>
+                        <outlet property="validateFlyBy" destination="Jod-q9-82N" id="Hdh-Te-vuc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozM-Mu-NCe" userLabel="First Responder" sceneMemberID="firstResponder"/>

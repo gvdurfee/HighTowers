@@ -72,7 +72,7 @@ struct Camera {
         cameraModel = (tiffMetaData![kCGImagePropertyTIFFModel] as? String)
         
         cameraSensorHeight = sensorHeightAdjust(cameraName: cameraModel!)
-        //print(cameraModel as Any, cameraSensorHeight)
+        print(cameraModel as Any, cameraSensorHeight)
         
     }
     
@@ -164,13 +164,13 @@ struct Camera {
             return 24.0
         case "Canon EOS 5D Mark III":
             return 24.0
-        case "Nikon D90":
+        case "NIKON D90":
             return 15.8
-        case "Nikon D100":
+        case "NIKON D100":
             return 15.5
-        case "Nikon D7100":
+        case "NIKON D7100":
             return 15.6
-        case "Nikon D7200":
+        case "NIKON D7200":
             return 15.6
         default:
             return 15.6

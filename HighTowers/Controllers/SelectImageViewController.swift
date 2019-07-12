@@ -53,9 +53,6 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         super.viewDidLoad()
         
         formatControlsAndViews()
-        
-        directionsText.text = #"This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. If there is no GPS information, the application will reset and return to this screen. If you've picked a relevant image, the application takes you to the next screen."#
-        
         //Set image with tap instruction for user and adjust it to scrollView size
         imageView.image = UIImage(named: "TapTower2")
         imageView.contentMode = .scaleAspectFill
@@ -68,6 +65,7 @@ class SelectImageViewController: UIViewController, UIScrollViewDelegate, UIImage
         tapGesture.numberOfTapsRequired = 1;
         imageView.addGestureRecognizer(tapGesture)
         
+        directionsText.text = #"This is the beginning screen for the application. When you tap on the image, the iPad Photo Library will come up and you can select the image that you want to analyze. However, the image you select MUST HAVE GPS CONTENT. If there is no GPS information, the application will reset and return to this screen. If you've picked a relevant image, the application takes you to the next screen."#
         
     }
     
