@@ -90,7 +90,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Populate the initial Map Directions text
-        mapDirectionsText.text = #"The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the "fly by" location. Once you've done this, press the "Validate Fly-By Coordinates" button. If one or more text boxes have the wrong formats, you'll see a popup that indicates the needed correction(s). Press the "OK" buttons, and make the corrections needed to proceed, pressing the vaildate button after each correction. The last popup will indicate success. Then ress the "Return" key on the keyboard, and the marker will move to the fly by coordinates. You can then zoom and pan, if necessary, to find the tower on the map, then tap on the tower base location you see on the map. The marker and map view will move to that location; then press "Record Map Data"."#
+        mapDirectionsText.text = #"The Google Map has been loaded with a marker located in the center. The marker indicates the location of your aircraft when the picture was taken. Populate the latitude and longitude text with the position estimate of the "fly by" location. Once you've done this, press the "Validate Fly-By Coordinates" button. If one or more text boxes have the wrong formats, you'll see a popup that indicates the needed correction(s). Press the "OK" buttons, and make the corrections needed to proceed, pressing the vaildate button after each correction. The last popup will indicate success. After pressing the "OK" button, then press the "Return" key on the keyboard, and the marker will move to the fly by coordinates. You can then zoom and pan, if necessary, to find the tower on the map, then tap on the tower base location you see on the map. The marker and map view will move to that location; then press "Record Map Data"."#
         
         // Establish GoogleMapViewController as the controller of its text fields.
         latitudeDegrees.delegate = self
@@ -121,8 +121,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         // Initial state is disabled to make sure the user puts in "fly-by" coordinates
         recordMapData.isEnabled = false
         
-        
-
     }
     
     
@@ -211,8 +209,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-   
-    
     //MARK: - Validation and Alert Messaging
     /***************************************************************/
     
@@ -234,6 +230,9 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     //Success message to user after all text boxes were properly filled
     func save(_ data: RegisterData) {
         showAlert(for: "Validation of Tower Fly-By Corrdinates Successful")
+        
+        //Now that the Fly-By coordinates are properly formed, the map marker can move to the location.
+        recordMapData.isEnabled = true
     }
     
     //This brings up an Alert with a message appropriate for the user to make the necessary correction.
@@ -289,7 +288,6 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
         validate()
     }
     
-    
 }
 
 
@@ -307,9 +305,6 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         google_Map.camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 18)
         
         marker.title = "Actual Tower Location"
-        
-        //Now that the Fly-By coordinates are properly formed, the map marker can move to the location.
-        recordMapData.isEnabled = true
         
     }
 }
