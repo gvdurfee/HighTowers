@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		719C9FB951F08FD6B9B90B41 /* libPods-HighTowers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73440FEA4F94CA2356FC19A5 /* libPods-HighTowers.a */; };
 		C703E518223AC7B800772253 /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703E516223AC7B800772253 /* Lines.swift */; };
 		C703E519223AC7B800772253 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703E517223AC7B800772253 /* SelectImageViewController.swift */; };
 		C727F88621E00E7B0067AE72 /* FormatText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727F88521E00E7B0067AE72 /* FormatText.swift */; };
@@ -20,11 +21,11 @@
 		C7BAF02921B826EC009E226E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02821B826EC009E226E /* Assets.xcassets */; };
 		C7BAF02C21B826EC009E226E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BAF02A21B826EC009E226E /* LaunchScreen.storyboard */; };
 		C7C1E6A62210A19700F9CABA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1E6A52210A19700F9CABA /* Camera.swift */; };
-		EA71296D04B30261C6DB0877 /* Pods_HighTowers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		590FA1D76A82B2CCE08F636B /* Pods-HighTowers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighTowers.release.xcconfig"; path = "Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers.release.xcconfig"; sourceTree = "<group>"; };
+		73440FEA4F94CA2356FC19A5 /* libPods-HighTowers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HighTowers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		820FF6BC8250C38ED98DE64A /* Pods-HighTowers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighTowers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers.debug.xcconfig"; sourceTree = "<group>"; };
 		C703E516223AC7B800772253 /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lines.swift; sourceTree = "<group>"; };
 		C703E517223AC7B800772253 /* SelectImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		C7BAF02B21B826EC009E226E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7BAF02D21B826EC009E226E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C1E6A52210A19700F9CABA /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighTowers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA71296D04B30261C6DB0877 /* Pods_HighTowers.framework in Frameworks */,
+				719C9FB951F08FD6B9B90B41 /* libPods-HighTowers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 		E21166F942AC9334B43A25F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE231194F2D91C8125A6AA73 /* Pods_HighTowers.framework */,
+				73440FEA4F94CA2356FC19A5 /* libPods-HighTowers.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,7 +164,6 @@
 				C7BAF01B21B826EB009E226E /* Frameworks */,
 				C7BAF01C21B826EB009E226E /* Resources */,
 				3D82998C28359DB8F10966FF /* [CP] Copy Pods Resources */,
-				1EBD00986880F6DB80DB451E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,7 +191,7 @@
 				};
 			};
 			buildConfigurationList = C7BAF01921B826EB009E226E /* Build configuration list for PBXProject "HighTowers" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -245,52 +244,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1EBD00986880F6DB80DB451E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3D82998C28359DB8F10966FF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HighTowers/Pods-HighTowers-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -459,6 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3932S683GR;
 				INFOPLIST_FILE = HighTowers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3932S683GR;
 				INFOPLIST_FILE = HighTowers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

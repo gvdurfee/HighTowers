@@ -1,4 +1,4 @@
-framework module Pods_HighTowers {
+module Pods_HighTowers {
   umbrella header "Pods-HighTowers-umbrella.h"
 
   export *
