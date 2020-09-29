@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +61,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tower Height  in Feet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA3-2b-cVM">
-                                <rect key="frame" x="431" y="657.5" width="162" height="20.5"/>
+                                <rect key="frame" x="432" y="657.5" width="160.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="hDz-QL-6G3"/>
                                 </constraints>
@@ -77,7 +78,7 @@
                                     <action selector="baseAdjust:" destination="BYZ-38-t0r" eventType="valueChanged" id="9mn-cA-Sob"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vu6-Be-sGa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vu6-Be-sGa">
                                 <rect key="frame" x="904" y="688" width="100" height="60"/>
                                 <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -94,7 +95,7 @@ Application</string>
                                     <action selector="resetApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fur-5L-W25"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-kq-FfQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-kq-FfQ">
                                 <rect key="frame" x="20" y="688" width="100" height="60"/>
                                 <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -111,7 +112,7 @@ Calculation</string>
                                     <action selector="submitForCalculation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EBZ-1S-Xdn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qd0-lX-HTW">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qd0-lX-HTW">
                                 <rect key="frame" x="784" y="688" width="100" height="60"/>
                                 <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -129,6 +130,7 @@ Google Map</string>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.22352941179999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Ti8-Oe-aP6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2UX-5C-Wc9"/>
@@ -155,7 +157,6 @@ Google Map</string>
                             <constraint firstItem="P5H-AM-4tN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y8O-kq-FfQ" secondAttribute="trailing" constant="8" symbolic="YES" id="zVe-Ih-31u"/>
                             <constraint firstItem="vu6-Be-sGa" firstAttribute="leading" secondItem="qd0-lX-HTW" secondAttribute="trailing" constant="20" id="zqv-yx-zE3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="D7x-DM-aeY"/>
                     <connections>
@@ -200,7 +201,7 @@ Google Map</string>
                                         <rect key="frame" x="118" y="160" width="788" height="434"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-De-Fe7">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-De-Fe7">
                                         <rect key="frame" x="20" y="344" width="63" height="66"/>
                                         <color key="backgroundColor" red="0.60784313725490191" green="0.80784313725490198" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -238,6 +239,7 @@ Google Map</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="6zr-GU-BFd"/>
                                                 </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
@@ -254,6 +256,7 @@ Google Map</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="n8E-7c-7ff"/>
                                                 </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
@@ -270,6 +273,7 @@ Google Map</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="DXv-Dr-p7q"/>
                                                 </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
@@ -278,11 +282,13 @@ Google Map</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="nmX-Pq-HTH"/>
                                                 </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-vh-hd6">
                                                 <rect key="frame" x="792" y="10" width="156" height="34"/>
+                                                <viewLayoutGuide key="safeArea" id="QeC-Yb-CWy"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="Chf-1u-P2O"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="GK9-io-e7N"/>
@@ -290,14 +296,13 @@ Google Map</string>
                                                     <constraint firstAttribute="height" constant="34" id="yke-qC-3SD"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="yxz-Ih-N8B"/>
                                                 </constraints>
-                                                <viewLayoutGuide key="safeArea" id="QeC-Yb-CWy"/>
                                                 <string key="text">Tower Longitude
   DD°-DDD° MM.mm</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jod-q9-82N">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jod-q9-82N">
                                                 <rect key="frame" x="427" y="26" width="130" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="OZV-2u-VWj"/>
@@ -362,6 +367,7 @@ Google Map</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="2Tp-NE-6jG"/>
                         <color key="backgroundColor" red="0.1081485823" green="0.22297921779999999" blue="0.4117869139" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pO1-XO-c1m" secondAttribute="trailing" id="AvT-Fj-NZu"/>
@@ -369,7 +375,6 @@ Google Map</string>
                             <constraint firstItem="pO1-XO-c1m" firstAttribute="top" secondItem="NHi-bt-oZH" secondAttribute="top" id="nvL-N2-bWg"/>
                             <constraint firstItem="pO1-XO-c1m" firstAttribute="leading" secondItem="NHi-bt-oZH" secondAttribute="leading" id="tP5-6p-Im6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2Tp-NE-6jG"/>
                     </view>
                     <connections>
                         <outlet property="coordinateContainer" destination="HEG-Bp-bop" id="ldw-YP-9jq"/>
