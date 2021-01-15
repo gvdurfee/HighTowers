@@ -165,7 +165,7 @@ struct Camera {
         case "Canon EOS 5D Mark III":
             return 24.0
         case "Canon EOS R6":
-            return 23.9
+            return 24.0
         case "NIKON D90":
             return 15.8
         case "NIKON D100":

@@ -238,6 +238,7 @@ class GoogleMapViewController: UIViewController, UITextFieldDelegate {
     //This brings up an Alert with a message appropriate for the user to make the necessary correction.
     func showAlert(for alert: String) {
         let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
+        alertController.setBackgroundColor(color: UIColor.white)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
@@ -309,3 +310,12 @@ extension GoogleMapViewController: GMSMapViewDelegate {
     }
 }
 
+extension UIAlertController {
+    
+    //Set background color of UIAlertController
+    func setBackgroundColor(color: UIColor) {
+        if let bgView = self.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
+            contentView.backgroundColor = color
+        }
+    }
+}
